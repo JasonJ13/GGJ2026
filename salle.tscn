@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bdgoyj2g1b5er"]
+
+[ext_resource type="Script" uid="uid://imihlonpwwkl" path="res://Script/Player.gd" id="1_ovk2j"]
+
+[node name="Player" type="Control" unique_id=2132586905]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovk2j")
+
+[node name="LeftButton" type="Button" parent="." unique_id=689819201]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 4.0
+grow_vertical = 2
+text = "Gauche"
+
+[node name="RightButton" type="Button" parent="." unique_id=1813775618]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Droite"
+
+[connection signal="pressed" from="LeftButton" to="." method="_on_gauche_bouton_pressed"]
+[connection signal="pressed" from="RightButton" to="." method="_on_droite_bouton_pressed"]
