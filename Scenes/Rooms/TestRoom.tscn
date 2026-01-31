@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d02u228foo4bp"]
+
+[ext_resource type="Script" uid="uid://bl6amof5fsdub" path="res://Scripts/Rooms/TestRoom.gd" id="1_d83gb"]
+[ext_resource type="PackedScene" uid="uid://djijvco3w202v" path="res://Scenes/Losts&Founds/LostTest.tscn" id="2_sg5r5"]
+
+[node name="TestRoom" type="Control" unique_id=1660816154]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_d83gb")
+metadata/_custom_type_script = "uid://gxssjaf764gg"
+
+[node name="LostTest" parent="." unique_id=53856072 instance=ExtResource("2_sg5r5")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="grab_signal" from="LostTest" to="." method="_on_lost_test_grab_signal"]

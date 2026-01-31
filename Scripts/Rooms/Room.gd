@@ -3,6 +3,8 @@ class_name Room
 
 var name_room : String
 
+var position_losts : Vector2
+
 var left_room : Room
 var right_room : Room
 
