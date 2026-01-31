@@ -324,9 +324,5 @@ color = Color(0, 0, 0, 0)
 wait_time = 5.0
 one_shot = true
 
-[node name="RespawnTimer" type="Timer" parent="." unique_id=1850886962]
-wait_time = 3.0
-
 [connection signal="left" from="Player" to="." method="enter_left_room"]
 [connection signal="right" from="Player" to="." method="enter_right_room"]
-[connection signal="timeout" from="RespawnTimer" to="." method="relocateMonster"]
