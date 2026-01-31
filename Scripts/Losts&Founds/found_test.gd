@@ -1,4 +1,4 @@
-extends Control
+extends Found
 signal place_signal
 
 # Called when the node enters the scene tree for the first time.

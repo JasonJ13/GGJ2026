@@ -1,5 +1,5 @@
-extends Control
-signal grab_signal
+extends Lost
+signal grab_signal(lost : Lost)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	print("lost grab")
-	grab_signal.emit()
+	grab_signal.emit(self)

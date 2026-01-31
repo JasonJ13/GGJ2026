@@ -1,7 +1,7 @@
-extends Node2D
+extends Control
 
 @onready var test_room: Control = $TestRoom
-signal grab_signal
+signal grab_signal_app(lost:Lost)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +11,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_test_room_grab_signal() -> void:
+func _on_test_room_grab_signal(lost:Lost) -> void:
 	print("app chek lost grab")
-	grab_signal.emit()
+	$Player.function(lost)

@@ -1,5 +1,5 @@
 extends Control
-
+class_name Lost
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +9,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-var position_found : Vector2
-var position_lost : Vector2
