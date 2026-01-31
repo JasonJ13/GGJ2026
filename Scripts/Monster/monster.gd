@@ -35,13 +35,12 @@ func opportunity() -> void:
 		else : 
 			return
 
+
 	else :
 		var nmbMovement = (randi() % (nmbRoom-1) ) + 1
 		
 		for i in range(nmbMovement) :
 			move(toTheLeft)
-
-	print(location)
 	app.monsterMoved()
 
 func move(left : bool) :

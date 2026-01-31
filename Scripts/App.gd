@@ -58,7 +58,7 @@ func _ready() -> void:
 			
 			@warning_ignore("integer_division")
 			if i == nmbRoom/2 :
-				#monster.location = newRoom
+				monster.location = newRoom
 				middleRoom = newRoom
 			
 			if i == nmbRoom -1 :
@@ -66,7 +66,7 @@ func _ready() -> void:
 				firstRoom.set_left_room(newRoom)
 		
 		enter_room(firstRoom, false)
-		#monsterIsPresent = true
+		monsterIsPresent = true
 	
 	else :
 		var attic : Room = load("res://Scenes/Rooms/Attic.tscn").instantiate()
@@ -92,7 +92,7 @@ func _ready() -> void:
 
 ### Gestion du changement de salle
 func enter_room(new_room : Room, not_first_room = true) -> void:
-	print(new_room)
+	#print(new_room)
 	if not_first_room :
 		self.remove_child(currentRoom)
 	
@@ -153,18 +153,18 @@ enum Reaction {CONTINUE,HUG,FLEE}
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	
-	if monsterIsPresent :
-		timerMonsterMouvement += 1
-		
-		if (onIdle && !monsterIsIn && cooldownMonster < timerMonsterMouvement) :
+	if monsterIsPresent && !monsterIsIn :
+		if (onIdle  && cooldownMonster < timerMonsterMouvement) :
 			monster.mouvementOpportunity()
 			timerMonsterMouvement = 0
+		
+		else :
+			timerMonsterMouvement += 1
 
 func monsterToPlayer() -> Array :
 	
 	var roomAct : Room= monster.get_location()
 	var nmbRoomTravel : int = 0
-	print(monsterIsIn, " ",monsterIsPresent)
 	while roomAct != currentRoom :
 		roomAct = roomAct.get_left_room()
 		nmbRoomTravel += 1
@@ -231,6 +231,8 @@ func die() -> void :
 
 func relocateMonster() -> void:
 	monster.relocate()
+	print("relocate " + str(monster.location))
+	timerMonsterMouvement = 0
 	monsterIsPresent = true
 
 
