@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpuounrabj7xp"]
 
 [ext_resource type="Script" uid="uid://3vkkdkpvex2c" path="res://Scripts/App.gd" id="1_lp4n7"]
+[ext_resource type="PackedScene" uid="uid://bdgoyj2g1b5er" path="res://Scenes/Player.tscn" id="2_pqvxe"]
 
 [node name="App" type="Control" unique_id=423688090]
 layout_mode = 3
@@ -10,3 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lp4n7")
+
+[node name="Player" parent="." unique_id=2132586905 instance=ExtResource("2_pqvxe")]
+layout_mode = 1
+
+[connection signal="left" from="Player" to="." method="enter_left_room"]
+[connection signal="right" from="Player" to="." method="enter_right_room"]

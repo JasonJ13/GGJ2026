@@ -9,5 +9,6 @@ extends Room
 
 
 func _ready() -> void:
-	set_next_room(self)
-	set_prev_room(self)
+	name_room = "Test Room"
+	set_left_room(self)
+	set_right_room(self)

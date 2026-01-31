@@ -1,17 +1,22 @@
 extends Control
 class_name Room
 
-var next_room : Room
-var prev_room : Room
+var name_room : String
 
-func set_next_room(nRoom : Room) -> void:
-	next_room = nRoom
+var left_room : Room
+var right_room : Room
 
-func get_next_room() -> Room:
-	return next_room
+func set_left_room(lRoom : Room) -> void:
+	left_room = lRoom
+
+func get_left_room() -> Room:
+	return left_room
 	
-func set_prev_room(pRoom : Room) :
-	prev_room = pRoom
+func set_right_room(rRoom : Room) :
+	right_room = rRoom
 
-func get_prev_room() -> Room:
-	return prev_room
+func get_right_room() -> Room:
+	return right_room
+
+func _to_string() -> String:
+	return "Salle : " + name_room
