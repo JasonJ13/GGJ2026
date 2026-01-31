@@ -9,6 +9,8 @@ var chance_to_move : int = 50
 enum Mask {CONTINUE, CUTE, DANGER, FLEE, STAY}
 var mask : Mask = Mask.FLEE
 
+@onready var timerRespawn : Timer = $Respawn
+
 func get_location() -> Room :
 	return location
 
@@ -49,6 +51,15 @@ func move(left : bool) :
 	else :
 		location = location.get_right_room()
 
+func disepear() :
+	location = null
+
+func relocate() :
+	if app.get_currentRoom() != app.get_firstRoom() :
+		location = app.get_firstRoom()
+	else :
+		location = app.get_middleRoom()
+	app.monsterIsPresent = true
 
 func get_Mask() -> Mask :
 	return mask

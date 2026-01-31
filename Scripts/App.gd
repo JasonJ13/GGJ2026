@@ -7,6 +7,8 @@ extends Control
 
 @export var nmbRoom : int = 4
 var currentRoom : Room
+var firstRoom : Room
+var middleRoom : Room
 var testRoomRess : Resource
 var onIdle : bool = true
 var comeFromRight : bool = true
@@ -19,6 +21,17 @@ var monster : Monster
 var monsterIsPresent : bool = false
 var monsterIsIn : bool = false
 
+func get_nmbRoom() -> int :
+	return nmbRoom
+
+func get_currentRoom() -> Room :
+	return currentRoom
+
+func get_firstRoom() -> Room :
+	return firstRoom
+
+func get_middleRoom() -> Room :
+	return middleRoom
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,7 +43,6 @@ func _ready() -> void:
 		testRoomRess = preload("res://Scenes/Rooms/TestRoom.tscn")
 		
 		var prevRoom : Room = null
-		var firstRoom : Room = null
 		for i in range(nmbRoom) :
 			var newRoom : Room = testRoomRess.instantiate()
 			newRoom.set_num(i)
@@ -45,8 +57,9 @@ func _ready() -> void:
 			@warning_ignore("integer_division")
 			if i == nmbRoom/2 :
 				monster.location = newRoom
+				middleRoom = newRoom
 			
-			elif i == nmbRoom -1 :
+			if i == nmbRoom -1 :
 				newRoom.set_right_room(firstRoom)
 				firstRoom.set_left_room(newRoom)
 		
@@ -78,7 +91,7 @@ func enter_left_room() -> void :
 	
 	else :
 		onIdle = false
-		animationMode.travel("FadeOutToLeft")
+		animationTree.set("parameters/conditions/GoLeft",true)
 	
 func enter_right_room() -> void :
 	
@@ -90,13 +103,15 @@ func enter_right_room() -> void :
 	
 	else :
 		onIdle = false
-		animationMode.travel("FadeOutToRight")
+		animationTree.set("parameters/conditions/GoRight",true)
 
 func new_left_room() -> void :
+	animationTree.set("parameters/conditions/GoLeft",false)
 	comeFromRight = false
 	enter_room(currentRoom.get_left_room())
 
 func new_right_room() -> void :
+	animationTree.set("parameters/conditions/GoRight",false)
 	comeFromRight = true
 	enter_room(currentRoom.get_right_room())
 
@@ -145,9 +160,13 @@ func monsterMoved() -> void :
 ##Gestion de la rencontre
 
 @onready var timerMonsterKill : Timer = $KillTimer
+@onready var timerMonsterRespawn : Timer = $RespawnTimer
 
 func Encounter() -> void:
 	monsterIsIn = true
+	monsterIsPresent = false
+	animationTree.set("parameters/conditions/Stay",false)
+	animationTree.set("parameters/conditions/MonsterIsIn",true)
 	self.add_child(monster)
 	if monster.get_Mask() == Monster.Mask.DANGER :
 		print("take one hint")
@@ -156,15 +175,36 @@ func Encounter() -> void:
 		print("wait for reaction")
 
 func react(reaction : Reaction) -> void :
+	monsterIsIn = false
+	animationTree.set("parameters/conditions/MonsterIsIn",false)
 	match [reaction, monster.get_Mask()] :
-		[Reaction.FLEE, Monster.Mask.FLEE], [Reaction.CONTINUE, Monster.Mask.CONTINUE] :
+		[Reaction.FLEE, Monster.Mask.FLEE]  :
+			if comeFromRight :
+				enter_left_room()
+			else :
+				enter_right_room()
 			survive()
+		
+		[Reaction.CONTINUE, Monster.Mask.CONTINUE] :
+			if comeFromRight :
+				enter_right_room()
+			else :
+				enter_left_room()
+			survive()
+		
 		_ :
 			die()
 
 func survive() -> void :
 	print("you survived")
-	#monster.relocate()
+	remove_child(monster)
+	monster.disepear()
+	timerMonsterRespawn.start()
+
 
 func die() -> void :
 	print("you die")
+
+
+func relocateMonster() -> void:
+	monster.relocate()
