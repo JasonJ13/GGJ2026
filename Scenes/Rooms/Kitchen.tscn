@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://jou5x0i6e6ri"]
+
+[ext_resource type="Script" uid="uid://cp2v00x1a5bs0" path="res://Scripts/Rooms/Bedroom.gd" id="1_xqpxp"]
+[ext_resource type="Texture2D" uid="uid://bv8gflwak5rdj" path="res://Assets/Graphical Assets/Rooms/kitchen_sketch.png" id="2_c6usg"]
+
+[node name="Kitchen" type="Control" unique_id=1660816154]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_xqpxp")
+metadata/_custom_type_script = "uid://gxssjaf764gg"
+
+[node name="KitchenSketch" type="TextureRect" parent="." unique_id=868101364]
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("2_c6usg")

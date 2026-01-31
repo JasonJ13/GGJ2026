@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dex4y8nr4cjfu"]
+
+[ext_resource type="Script" uid="uid://cp2v00x1a5bs0" path="res://Scripts/Rooms/Bedroom.gd" id="1_d2b5o"]
+[ext_resource type="Texture2D" uid="uid://c6y2y4wr2ld3a" path="res://Assets/Graphical Assets/Rooms/livingroom_sketch.png" id="2_7x63e"]
+
+[node name="Livingroom" type="Control" unique_id=1660816154]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_d2b5o")
+metadata/_custom_type_script = "uid://gxssjaf764gg"
+
+[node name="LivingroomSketch" type="TextureRect" parent="." unique_id=868101364]
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("2_7x63e")
