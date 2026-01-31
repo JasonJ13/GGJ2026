@@ -17,6 +17,7 @@ var comeFromRight : bool = true
 func get_current_room() -> Room :
 	return currentRoom
 
+@export var debug_Monster = true
 var monsterRess : Resource = preload("res://Scenes/Monster/Monster.tscn")
 var monster : Monster
 var monsterIsPresent : bool = false
@@ -34,7 +35,7 @@ func get_firstRoom() -> Room :
 func get_middleRoom() -> Room :
 	return middleRoom
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	
 	monster = monsterRess.instantiate()
@@ -94,19 +95,18 @@ func _ready() -> void:
 		livingroom.grab_signal.connect(grab_lost)
 		attic.grab_signal.connect(grab_lost)
 		
-		var foundattic : Found = attic.get_found_test()
-		var lostbedroom : Lost = bedroom.get_lost_test()
-		
-		foundattic.associate(lostbedroom)
-		
-		
-		
 		enter_room(attic, false)
+		
+		firstRoom = attic
+		middleRoom = livingroom
+		
+		if debug_Monster :
+			monster.location = livingroom
+			monsterIsPresent = true
 
 
-### Gestion du changement de salle
+#region Gestion du changement de salle
 func enter_room(new_room : Room, not_first_room = true) -> void:
-	#print(new_room)
 	if not_first_room :
 		self.remove_child(currentRoom)
 	
@@ -154,14 +154,14 @@ func new_right_room() -> void :
 
 
 
-### Gestion du monstre
+#region Gestion du monstre
 
 var cooldownMonster : int = 120
 var timerMonsterMouvement : int = 0
 
 enum Reaction {CONTINUE,HUG,FLEE}
 
-## Mouvement du Monstre
+#region Mouvement du Monstre
 
 
 @warning_ignore("unused_parameter")
@@ -194,7 +194,7 @@ func monsterMoved() -> void :
 		Encounter()
 
 
-##Gestion de la rencontre
+#region de la rencontre
 
 @onready var timerMonsterKill : Timer = $KillTimer
 @onready var timerMonsterRespawn : Timer = $RespawnTimer
@@ -241,6 +241,8 @@ func survive() -> void :
 
 func die() -> void :
 	print("you die")
+	enter_left_room()
+	survive()
 	
 
 func relocateMonster() -> void:
@@ -251,7 +253,7 @@ func relocateMonster() -> void:
 
 
 
-###Gestion des Losts&Founds
+#region Gestion des Losts&Founds
 
 func grab_lost(lost:Lost) -> void:
 	print("app chek lost grab " + str(lost))

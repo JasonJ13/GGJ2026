@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://dex4y8nr4cjfu"]
+[gd_scene format=3 uid="uid://c5ca4qr1uhji0"]
 
 [ext_resource type="Script" uid="uid://cp2v00x1a5bs0" path="res://Scripts/Rooms/Bedroom.gd" id="1_d2b5o"]
 [ext_resource type="Texture2D" uid="uid://c6y2y4wr2ld3a" path="res://Assets/Graphical Assets/Rooms/livingroom_sketch.png" id="2_7x63e"]
-[ext_resource type="Script" uid="uid://bn5tlpkc5f33r" path="res://Scripts/Losts&Founds/Found.gd" id="5_fchf2"]
-[ext_resource type="Script" uid="uid://dbkjp6npas3ce" path="res://Scripts/Losts&Founds/Lost.gd" id="6_hgpqr"]
+[ext_resource type="PackedScene" uid="uid://bimcbqb4ldp4r" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_04jel"]
+[ext_resource type="PackedScene" uid="uid://bhrvtcvnh2yp3" path="res://Scenes/Losts&Founds/Found.tscn" id="4_da8sn"]
 
 [node name="Livingroom" type="Control" unique_id=1660816154]
 layout_mode = 3
@@ -20,18 +20,12 @@ scale = Vector2(0.30052084, 0.29930553)
 mouse_filter = 2
 texture = ExtResource("2_7x63e")
 
-[node name="Found" type="Control" parent="." unique_id=2111068218 node_paths=PackedStringArray("lost_associate")]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_fchf2")
-lost_associate = NodePath("../Lost")
-metadata/_custom_type_script = "uid://bn5tlpkc5f33r"
+[node name="Lost2" parent="." unique_id=741506032 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_04jel")]
+layout_mode = 0
+found_associate = NodePath("")
 
-[node name="Lost" type="Control" parent="." unique_id=1576677854 node_paths=PackedStringArray("found_associate")]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("6_hgpqr")
-found_associate = NodePath("../Found")
-metadata/_custom_type_script = "uid://dbkjp6npas3ce"
+[node name="Found2" parent="." unique_id=551221148 node_paths=PackedStringArray("lost_associate") instance=ExtResource("4_da8sn")]
+layout_mode = 0
+offset_left = 0.0
+offset_right = 0.0
+lost_associate = NodePath("")

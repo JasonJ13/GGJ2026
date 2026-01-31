@@ -57,6 +57,7 @@ func relocate() :
 		location = app.get_firstRoom()
 	else :
 		location = app.get_middleRoom()
+	print(location)
 	
 
 func get_Mask() -> Mask :

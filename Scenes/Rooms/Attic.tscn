@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bmjfuehra76k3" path="res://Scripts/Rooms/Attic.gd" id="1_nsg7n"]
 [ext_resource type="Texture2D" uid="uid://h46vjyffjsi6" path="res://Assets/Graphical Assets/Rooms/attic_sketch.png" id="2_dj34i"]
-[ext_resource type="PackedScene" uid="uid://ddlb6d0d82a31" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_nsg7n"]
-[ext_resource type="PackedScene" uid="uid://bqdbojfeukcli" path="res://Scenes/Losts&Founds/Found.tscn" id="4_dj34i"]
+[ext_resource type="PackedScene" uid="uid://bimcbqb4ldp4r" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_nsg7n"]
+[ext_resource type="PackedScene" uid="uid://bhrvtcvnh2yp3" path="res://Scenes/Losts&Founds/Found.tscn" id="4_dj34i"]
 
 [node name="Attic" type="Control" unique_id=1660816154]
 layout_mode = 3
@@ -20,8 +20,12 @@ scale = Vector2(0.30052084, 0.29930553)
 mouse_filter = 2
 texture = ExtResource("2_dj34i")
 
-[node name="Lost" parent="." unique_id=534757491 instance=ExtResource("3_nsg7n")]
+[node name="Lost" parent="." unique_id=534757491 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_nsg7n")]
 layout_mode = 0
+found_associate = NodePath("../Found")
 
-[node name="Found" parent="." unique_id=1366859269 instance=ExtResource("4_dj34i")]
+[node name="Found" parent="." unique_id=1366859269 node_paths=PackedStringArray("lost_associate") instance=ExtResource("4_dj34i")]
 layout_mode = 0
+offset_left = 0.0
+offset_right = 0.0
+lost_associate = NodePath("../Lost")
