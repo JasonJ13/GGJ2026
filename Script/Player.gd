@@ -14,10 +14,8 @@ func _process(delta: float) -> void:
 
 
 func _on_left_button_pressed() -> void:
-	print("gauche")
 	left.emit()
 
 
 func _on_right_button_pressed() -> void:
-	print("droite")
 	right.emit()

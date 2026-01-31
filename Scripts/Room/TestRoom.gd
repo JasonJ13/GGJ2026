@@ -8,7 +8,10 @@ extends Room
 
 
 
-func _ready() -> void:
-	name_room = "Test Room"
+func _init() -> void:
+	name_room = "Test Room "
 	set_left_room(self)
 	set_right_room(self)
+
+func set_num(num : int) :
+	name_room = name_room + str(num)

@@ -3,6 +3,223 @@
 [ext_resource type="Script" uid="uid://3vkkdkpvex2c" path="res://Scripts/App.gd" id="1_lp4n7"]
 [ext_resource type="PackedScene" uid="uid://bdgoyj2g1b5er" path="res://Scenes/Player.tscn" id="2_pqvxe"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pqvxe"]
+animation = &"FadeIn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tcqga"]
+animation = &"FadeOutToLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r41ji"]
+animation = &"FadeOutToRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3anhv"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r41ji"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lbrif"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sg4pn"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcqga"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3anhv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_330lp"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pqvxe"]
+states/FadeIn/node = SubResource("AnimationNodeAnimation_pqvxe")
+states/FadeIn/position = Vector2(600.4746, 99.945045)
+states/FadeOutToLeft/node = SubResource("AnimationNodeAnimation_tcqga")
+states/FadeOutToLeft/position = Vector2(480.27948, 174.68597)
+states/FadeOutToRight/node = SubResource("AnimationNodeAnimation_r41ji")
+states/FadeOutToRight/position = Vector2(480.2795, 19.7372)
+states/RESET/node = SubResource("AnimationNodeAnimation_3anhv")
+states/RESET/position = Vector2(362.0746, 100.832)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_r41ji"), "RESET", "FadeOutToLeft", SubResource("AnimationNodeStateMachineTransition_lbrif"), "RESET", "FadeOutToRight", SubResource("AnimationNodeStateMachineTransition_sg4pn"), "FadeOutToRight", "FadeIn", SubResource("AnimationNodeStateMachineTransition_tcqga"), "FadeOutToLeft", "FadeIn", SubResource("AnimationNodeStateMachineTransition_3anhv"), "FadeIn", "RESET", SubResource("AnimationNodeStateMachineTransition_330lp")]
+graph_offset = Vector2(116.07456, 3.9672985)
+
+[sub_resource type="Animation" id="Animation_tcqga"]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"new_room"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3anhv"]
+resource_name = "FadeOut"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_3vx3j"]
+resource_name = "FadeOutToLeft"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Color(0, 0, 0, 0.39215687), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pqvxe"]
+resource_name = "FadeOutToRight"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Color(0, 0, 0, 0.39215687), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(-1152, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r41ji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbrif"]
+_data = {
+&"FadeIn": SubResource("Animation_tcqga"),
+&"FadeOut": SubResource("Animation_3anhv"),
+&"FadeOutToLeft": SubResource("Animation_3vx3j"),
+&"FadeOutToRight": SubResource("Animation_pqvxe"),
+&"RESET": SubResource("Animation_r41ji")
+}
+
 [node name="App" type="Control" unique_id=423688090]
 layout_mode = 3
 anchors_preset = 15
@@ -14,6 +231,23 @@ script = ExtResource("1_lp4n7")
 
 [node name="Player" parent="." unique_id=2132586905 instance=ExtResource("2_pqvxe")]
 layout_mode = 1
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=2088530074]
+tree_root = SubResource("AnimationNodeStateMachine_pqvxe")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=947932303]
+libraries/ = SubResource("AnimationLibrary_lbrif")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1046974820]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="left" from="Player" to="." method="enter_left_room"]
 [connection signal="right" from="Player" to="." method="enter_right_room"]
