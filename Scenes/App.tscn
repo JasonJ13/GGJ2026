@@ -242,6 +242,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lp4n7")
+nmbRoom = 6
 
 [node name="Player" parent="." unique_id=2132586905 instance=ExtResource("2_pqvxe")]
 layout_mode = 1
