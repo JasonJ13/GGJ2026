@@ -2,6 +2,7 @@ extends Control
 
 signal left
 signal right
+signal object_associated
 
 var backpack: Array [Lost]
 
@@ -20,4 +21,14 @@ func _on_right_button_pressed() -> void:
 	right.emit()
 
 func add_to_backpack(lost:Lost) -> void:
+	print("add to backpack")
 	backpack.append(lost)
+
+func check_lost(found : Found) -> void :
+	print(found.lost_associate)
+	print(backpack)
+	if found.lost_associate in backpack :
+		backpack.erase(found.lost_associate)
+		found.lost_associate.show()
+		found.hide()
+		

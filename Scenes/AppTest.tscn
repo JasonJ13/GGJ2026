@@ -19,4 +19,6 @@ layout_mode = 1
 [node name="TestRoom" parent="." unique_id=1660816154 instance=ExtResource("2_67evc")]
 layout_mode = 1
 
-[connection signal="grab_signal_app" from="." to="Player" method="_on_app_test_grab_signal_app"]
+[connection signal="object_associated" from="Player" to="." method="_on_player_object_associated"]
+[connection signal="grab_signal" from="TestRoom" to="." method="_on_test_room_grab_signal"]
+[connection signal="place_signal" from="TestRoom" to="." method="_on_test_room_place_signal"]
