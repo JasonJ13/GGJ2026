@@ -19,7 +19,6 @@ func defineApp(a : Control) -> void :
 
 func mouvementOpportunity() -> void :
 	var chance = randi() % 100
-	print("opportunity : " + str(chance))
 	if chance < chance_to_move :
 		opportunity()
 
@@ -59,7 +58,7 @@ func relocate() :
 		location = app.get_firstRoom()
 	else :
 		location = app.get_middleRoom()
-	app.monsterIsPresent = true
+	
 
 func get_Mask() -> Mask :
 	return mask
