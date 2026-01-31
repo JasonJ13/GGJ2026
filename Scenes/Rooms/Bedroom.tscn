@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cp2v00x1a5bs0" path="res://Scripts/Rooms/Bedroom.gd" id="1_tyjpt"]
 [ext_resource type="Texture2D" uid="uid://c1wjmc26ebu4g" path="res://Assets/Graphical Assets/Rooms/bedroom_sketch.png" id="2_b2o46"]
-[ext_resource type="PackedScene" uid="uid://ddlb6d0d82a31" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_b2o46"]
-[ext_resource type="PackedScene" uid="uid://bqdbojfeukcli" path="res://Scenes/Losts&Founds/Found.tscn" id="4_tg3q4"]
+[ext_resource type="PackedScene" uid="uid://bimcbqb4ldp4r" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_b2o46"]
+[ext_resource type="PackedScene" uid="uid://bhrvtcvnh2yp3" path="res://Scenes/Losts&Founds/Found.tscn" id="4_tg3q4"]
+[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/icon.svg" id="4_wrg8o"]
 
 [node name="Bedroom" type="Control" unique_id=1660816154]
 layout_mode = 3
@@ -20,8 +21,14 @@ scale = Vector2(0.30052084, 0.29930553)
 mouse_filter = 2
 texture = ExtResource("2_b2o46")
 
-[node name="Lost" parent="." unique_id=534757491 instance=ExtResource("3_b2o46")]
+[node name="Lost" parent="." unique_id=534757491 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_b2o46")]
 layout_mode = 0
+found_associate = NodePath("../Found")
+button_icon = ExtResource("4_wrg8o")
 
 [node name="Found" parent="." unique_id=1366859269 instance=ExtResource("4_tg3q4")]
 layout_mode = 0
+offset_left = 498.0
+offset_top = 186.0
+offset_right = 498.0
+offset_bottom = 186.0

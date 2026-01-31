@@ -3,9 +3,13 @@ class_name Found
 
 @export var lost_associate: Lost
 
+
 signal place_signal(found:Found)
 
 var nameFound : String = "name not gived"
+
+func _ready() -> void :
+	$Button.flat = true
 
 func associate(l_associate : Lost) -> void:
 	lost_associate = l_associate 
