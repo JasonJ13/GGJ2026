@@ -6,15 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cfjn82nev34ws" path="res://Scenes/Losts&Founds/FoundTest.tscn" id="4_aacpj"]
 
 [node name="TestRoom" type="Control" unique_id=1660816154]
-layout_direction = 1
 layout_mode = 3
 anchors_preset = 0
-mouse_filter = 1
-mouse_behavior_recursive = 2
+mouse_filter = 2
 script = ExtResource("1_24gi2")
 metadata/_custom_type_script = "uid://gxssjaf764gg"
 
-[node name="AtticSketch" type="TextureRect" parent="." unique_id=805440810]
+[node name="AtticSketch" type="TextureRect" parent="." unique_id=868101364]
 layout_mode = 1
 offset_right = 3840.0
 offset_bottom = 2160.0
@@ -22,16 +20,27 @@ scale = Vector2(0.30052084, 0.29930553)
 mouse_filter = 2
 texture = ExtResource("3_sg5r5")
 
+[node name="LostTest" parent="." unique_id=534757491 instance=ExtResource("2_sg5r5")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 705.0
+offset_top = 378.0
+offset_right = 705.0
+offset_bottom = 378.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="FoundTest" parent="." unique_id=458964154 instance=ExtResource("4_aacpj")]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 282.0
-offset_right = 384.0
-offset_bottom = 282.0
+offset_left = 706.0
+offset_top = 377.0
+offset_right = 706.0
+offset_bottom = 377.0
 
-[node name="LostTest" parent="." unique_id=534757491 instance=ExtResource("2_sg5r5")]
-layout_mode = 1
-offset_left = 810.0
-offset_top = 136.0
-offset_right = 810.0
-offset_bottom = 136.0
+[connection signal="grab_signal" from="LostTest" to="." method="found_clicked"]
+[connection signal="place_signal" from="FoundTest" to="." method="_on_found_test_place_signal"]

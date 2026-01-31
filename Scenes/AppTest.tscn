@@ -2,10 +2,23 @@
 
 [ext_resource type="Script" uid="uid://jsjr38x6xgjg" path="res://Scripts/app_test.gd" id="1_kookg"]
 [ext_resource type="PackedScene" uid="uid://d02u228foo4bp" path="res://Scenes/Rooms/TestRoom.tscn" id="2_67evc"]
+[ext_resource type="PackedScene" uid="uid://bdgoyj2g1b5er" path="res://Scenes/Player.tscn" id="3_67evc"]
 
-[node name="AppTest" type="Node2D" unique_id=2013273965]
+[node name="AppTest" type="Control" unique_id=1562605107]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_kookg")
 
-[node name="TestRoom" parent="." unique_id=1660816154 instance=ExtResource("2_67evc")]
+[node name="Player" parent="." unique_id=2132586905 instance=ExtResource("3_67evc")]
+layout_mode = 1
 
+[node name="TestRoom" parent="." unique_id=1660816154 instance=ExtResource("2_67evc")]
+layout_mode = 1
+
+[connection signal="object_associated" from="Player" to="." method="_on_player_object_associated"]
 [connection signal="grab_signal" from="TestRoom" to="." method="_on_test_room_grab_signal"]
+[connection signal="place_signal" from="TestRoom" to="." method="_on_test_room_place_signal"]

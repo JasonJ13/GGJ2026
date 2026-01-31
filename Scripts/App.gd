@@ -1,7 +1,8 @@
 extends Control
 
-@export var isdebug : bool = true
+@export var debugRoom : bool = true
 
+@onready var player : Player = $Player
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var animationMode = animationTree.get("parameters/playback")
 
@@ -39,7 +40,8 @@ func _ready() -> void:
 	monster = monsterRess.instantiate()
 	monster.defineApp(self)
 	
-	if isdebug :
+	
+	if debugRoom :
 		testRoomRess = preload("res://Scenes/Rooms/TestRoom.tscn")
 		
 		var prevRoom : Room = null
@@ -65,6 +67,27 @@ func _ready() -> void:
 		
 		enter_room(firstRoom, false)
 		#monsterIsPresent = true
+	
+	else :
+		var attic : Room = load("res://Scenes/Rooms/Attic.tscn").instantiate()
+		var bedroom : Room = load("res://Scenes/Rooms/Bedroom.tscn").instantiate()
+		
+		attic.set_left_room(bedroom)
+		attic.set_right_room(bedroom)
+		bedroom.set_left_room(attic)
+		bedroom.set_right_room(attic)
+		
+		attic.place_signal.connect(place_found)
+		bedroom.grab_signal.connect(grab_lost)
+		
+		var foundattic : Found = attic.get_found_test()
+		var lostbedroom : Lost = bedroom.get_lost_test()
+		
+		foundattic.associate(lostbedroom)
+		
+		
+		
+		enter_room(attic, false)
 
 
 ### Gestion du changement de salle
@@ -209,3 +232,16 @@ func die() -> void :
 func relocateMonster() -> void:
 	monster.relocate()
 	monsterIsPresent = true
+
+
+
+###Gestion des Losts&Founds
+
+func grab_lost(lost:Lost) -> void:
+	print("app chek lost grab " + str(lost))
+	player.add_to_backpack(lost)
+
+
+func place_found(found: Found) -> void:
+	print("app chek found place " + str(found))
+	player.check_lost(found)
