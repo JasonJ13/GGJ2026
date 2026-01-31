@@ -1,8 +1,24 @@
 [gd_scene format=3 uid="uid://dhjojrg00b857"]
 
 [ext_resource type="Script" uid="uid://bv2mcn8kod5w" path="res://Scripts/Monster/monster.gd" id="1_o74e3"]
+[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/icon.svg" id="2_5kmi8"]
 
 [node name="Monster" type="Control" unique_id=95873439]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_o74e3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=739858734]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5kmi8")
