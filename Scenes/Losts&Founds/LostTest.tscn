@@ -1,23 +1,7 @@
 [gd_scene format=3 uid="uid://djijvco3w202v"]
 
-[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://icon.svg" id="1_aw0fw"]
-
-[sub_resource type="GDScript" id="GDScript_1j40k"]
-script/source = "extends Control
-signal grab_signal
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _on_button_pressed() -> void:
-	print(\"lost grab\")
-	grab_signal.emit()
-"
+[ext_resource type="Script" uid="uid://bm835ckbaiyib" path="res://Scripts/Losts&Founds/lost_test.gd" id="1_kee4t"]
+[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/icon.svg" id="2_aw0fw"]
 
 [node name="LostTest" type="Control" unique_id=534757491]
 layout_mode = 3
@@ -26,7 +10,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_1j40k")
+script = ExtResource("1_kee4t")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=526826828]
+position = Vector2(394, 282)
+texture = ExtResource("2_aw0fw")
 
 [node name="Button" type="Button" parent="." unique_id=777372993]
 layout_mode = 1
@@ -35,6 +23,6 @@ offset_left = 327.0
 offset_top = 213.0
 offset_right = 463.0
 offset_bottom = 349.0
-icon = ExtResource("1_aw0fw")
+text = "Lost"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
