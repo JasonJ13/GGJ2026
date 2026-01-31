@@ -71,14 +71,28 @@ func _ready() -> void:
 	else :
 		var attic : Room = load("res://Scenes/Rooms/Attic.tscn").instantiate()
 		var bedroom : Room = load("res://Scenes/Rooms/Bedroom.tscn").instantiate()
+		var livingroom : Room = load("res://Scenes/Rooms/Livingroom.tscn").instantiate()
+		var kitchen : Room = load("res://Scenes/Rooms/Kitchen.tscn").instantiate()
 		
-		attic.set_left_room(bedroom)
 		attic.set_right_room(bedroom)
+		bedroom.set_right_room(livingroom)
+		livingroom.set_right_room(kitchen)
+		kitchen.set_right_room(attic)
+		
+		attic.set_left_room(kitchen)
+		kitchen.set_left_room(livingroom)
+		livingroom.set_left_room(bedroom)
 		bedroom.set_left_room(attic)
-		bedroom.set_right_room(attic)
 		
 		attic.place_signal.connect(place_found)
+		kitchen.place_signal.connect(place_found)
+		livingroom.place_signal.connect(place_found)
+		bedroom.place_signal.connect(place_found)
+		
 		bedroom.grab_signal.connect(grab_lost)
+		kitchen.grab_signal.connect(grab_lost)
+		livingroom.grab_signal.connect(grab_lost)
+		attic.grab_signal.connect(grab_lost)
 		
 		var foundattic : Found = attic.get_found_test()
 		var lostbedroom : Lost = bedroom.get_lost_test()

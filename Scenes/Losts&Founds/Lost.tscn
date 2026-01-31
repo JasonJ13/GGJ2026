@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ddlb6d0d82a31"]
+
+[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/icon.svg" id="1_5wkp8"]
+[ext_resource type="Script" uid="uid://dbkjp6npas3ce" path="res://Scripts/Losts&Founds/Lost.gd" id="1_m5lny"]
+
+[node name="Lost" type="Control" unique_id=741506032]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_m5lny")
+metadata/_custom_type_script = "uid://dbkjp6npas3ce"
+
+[node name="Icon" type="TextureRect" parent="." unique_id=2035615358]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5wkp8")
+
+[node name="Button" type="Button" parent="." unique_id=777372993]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lost"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
