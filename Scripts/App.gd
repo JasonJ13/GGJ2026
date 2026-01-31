@@ -9,6 +9,7 @@ extends Control
 var currentRoom : Room
 var testRoomRess : Resource
 var onIdle : bool = true
+var comeFromRight : bool = true
 
 func get_current_room() -> Room :
 	return currentRoom
@@ -16,7 +17,8 @@ func get_current_room() -> Room :
 var monsterRess : Resource = preload("res://Scenes/Monster/Monster.tscn")
 var monster : Monster
 var monsterIsPresent : bool = false
-var monsterIsOut : bool = true
+var monsterIsIn : bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,6 +53,8 @@ func _ready() -> void:
 		enter_room(firstRoom, false)
 		monsterIsPresent = true
 
+
+### Gestion du changement de salle
 func enter_room(new_room : Room, not_first_room = true) -> void:
 	print(new_room)
 	if not_first_room :
@@ -59,37 +63,64 @@ func enter_room(new_room : Room, not_first_room = true) -> void:
 	currentRoom = new_room
 	self.add_child(currentRoom)
 	onIdle = true
-
-
+	
+	if monster.location == currentRoom :
+		Encounter()
 
 
 func enter_left_room() -> void :
-	onIdle = false
-	animationMode.travel("FadeOutToLeft")
+	
+	if monsterIsIn :
+		if comeFromRight :
+			react(Reaction.FLEE)
+		else :
+			react(Reaction.CONTINUE)
+	
+	else :
+		onIdle = false
+		animationMode.travel("FadeOutToLeft")
 	
 func enter_right_room() -> void :
-	onIdle = false
-	animationMode.travel("FadeOutToRight")
+	
+	if monsterIsIn :
+		if comeFromRight :
+			react(Reaction.CONTINUE)
+		else :
+			react(Reaction.FLEE)
+	
+	else :
+		onIdle = false
+		animationMode.travel("FadeOutToRight")
 
 func new_left_room() -> void :
+	comeFromRight = false
 	enter_room(currentRoom.get_left_room())
 
 func new_right_room() -> void :
+	comeFromRight = true
 	enter_room(currentRoom.get_right_room())
 
 
+
+### Gestion du monstre
+
 var cooldownMonster : int = 120
-var timerMonster : int = 0
+var timerMonsterMouvement : int = 0
+
+enum Reaction {CONTINUE,HUG,FLEE}
+
+## Mouvement du Monstre
+
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	
 	if monsterIsPresent :
-		timerMonster += 1
+		timerMonsterMouvement += 1
 		
-		if (onIdle && monsterIsOut && cooldownMonster < timerMonster) :
+		if (onIdle && !monsterIsIn && cooldownMonster < timerMonsterMouvement) :
 			monster.mouvementOpportunity()
-			timerMonster = 0
+			timerMonsterMouvement = 0
 
 func monsterToPlayer() -> Array :
 	
@@ -108,5 +139,32 @@ func monsterToPlayer() -> Array :
 	
 func monsterMoved() -> void :
 	if monster.get_location() == currentRoom :
-		self.add_child(monster)
-		monsterIsOut = false
+		Encounter()
+
+
+##Gestion de la rencontre
+
+@onready var timerMonsterKill : Timer = $KillTimer
+
+func Encounter() -> void:
+	monsterIsIn = true
+	self.add_child(monster)
+	if monster.get_Mask() == Monster.Mask.DANGER :
+		print("take one hint")
+	else :
+		timerMonsterKill.start()
+		print("wait for reaction")
+
+func react(reaction : Reaction) -> void :
+	match [reaction, monster.get_Mask()] :
+		[Reaction.FLEE, Monster.Mask.FLEE], [Reaction.CONTINUE, Monster.Mask.CONTINUE] :
+			survive()
+		_ :
+			die()
+
+func survive() -> void :
+	print("you survived")
+	#monster.relocate()
+
+func die() -> void :
+	print("you die")

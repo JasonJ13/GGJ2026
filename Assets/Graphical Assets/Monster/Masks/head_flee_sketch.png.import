@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f227h4vqyhag"
-path="res://.godot/imported/head_stay_sketch.png-a6e5ad3ddb157cfa51dcb1ed056bfb2f.ctex"
+uid="uid://6veb7dlc3bxe"
+path="res://.godot/imported/head_flee_sketch.png-a649ea652d411f70068201239fdf44e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphical Assets/Masks/head_stay_sketch.png"
-dest_files=["res://.godot/imported/head_stay_sketch.png-a6e5ad3ddb157cfa51dcb1ed056bfb2f.ctex"]
+source_file="res://Assets/Graphical Assets/Monster/Masks/head_flee_sketch.png"
+dest_files=["res://.godot/imported/head_flee_sketch.png-a649ea652d411f70068201239fdf44e4.ctex"]
 
 [params]
 

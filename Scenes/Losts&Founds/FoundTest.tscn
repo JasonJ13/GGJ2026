@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cfjn82nev34ws"]
 
 [ext_resource type="Script" uid="uid://eqmo6g6vxto7" path="res://Scripts/Losts&Founds/found_test.gd" id="1_knfol"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_37vah"]
 
 [node name="FoundTest" type="Control" unique_id=1366859269]
 layout_mode = 3
@@ -9,12 +8,18 @@ anchors_preset = 0
 script = ExtResource("1_knfol")
 
 [node name="Button" type="Button" parent="." unique_id=865198224]
-layout_mode = 0
-offset_left = 303.0
-offset_top = 184.0
-offset_right = 439.0
-offset_bottom = 320.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Found"
-icon = ExtResource("2_37vah")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

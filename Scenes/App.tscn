@@ -242,9 +242,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lp4n7")
-nmbRoom = 6
+nmbRoom = 2
 
 [node name="Player" parent="." unique_id=2132586905 instance=ExtResource("2_pqvxe")]
+clip_contents = false
 layout_mode = 1
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=2088530074]
@@ -255,6 +256,7 @@ anim_player = NodePath("../AnimationPlayer")
 libraries/ = SubResource("AnimationLibrary_lbrif")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1046974820]
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,6 +265,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="KillTimer" type="Timer" parent="." unique_id=252207432]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="left" from="Player" to="." method="enter_left_room"]
 [connection signal="right" from="Player" to="." method="enter_right_room"]

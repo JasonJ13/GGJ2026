@@ -6,7 +6,8 @@ var app : Control
 var location : Room
 var chance_to_move : int = 50
 
-var mask : Mask
+enum Mask {CONTINUE, CUTE, DANGER, FLEE, STAY}
+var mask : Mask = Mask.FLEE
 
 func get_location() -> Room :
 	return location
@@ -26,7 +27,12 @@ func opportunity() -> void:
 	var toTheLeft : bool = resultMonsterToPlayer[1]
 
 	if nmbRoom == 1 :
-		move(toTheLeft)
+		var chance = randi() % 100
+		
+		if chance < 25 :
+			move(toTheLeft)
+		else : 
+			return
 
 	else :
 		var nmbMovement = (randi() % (nmbRoom-1) ) + 1
@@ -42,3 +48,7 @@ func move(left : bool) :
 		location = location.get_left_room()
 	else :
 		location = location.get_right_room()
+
+
+func get_Mask() -> Mask :
+	return mask
