@@ -56,7 +56,7 @@ func _ready() -> void:
 			
 			@warning_ignore("integer_division")
 			if i == nmbRoom/2 :
-				monster.location = newRoom
+				#monster.location = newRoom
 				middleRoom = newRoom
 			
 			if i == nmbRoom -1 :
@@ -64,7 +64,7 @@ func _ready() -> void:
 				firstRoom.set_left_room(newRoom)
 		
 		enter_room(firstRoom, false)
-		monsterIsPresent = true
+		#monsterIsPresent = true
 
 
 ### Gestion du changement de salle
@@ -141,7 +141,7 @@ func monsterToPlayer() -> Array :
 	
 	var roomAct : Room= monster.get_location()
 	var nmbRoomTravel : int = 0
-	
+	print(monsterIsIn, " ",monsterIsPresent)
 	while roomAct != currentRoom :
 		roomAct = roomAct.get_left_room()
 		nmbRoomTravel += 1
@@ -204,7 +204,8 @@ func survive() -> void :
 
 func die() -> void :
 	print("you die")
-
+	
 
 func relocateMonster() -> void:
 	monster.relocate()
+	monsterIsPresent = true
