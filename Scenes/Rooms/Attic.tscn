@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bo17inxa05dq3"]
+
+[ext_resource type="Script" uid="uid://bmjfuehra76k3" path="res://Scripts/Rooms/Attic.gd" id="1_nsg7n"]
+[ext_resource type="Texture2D" uid="uid://h46vjyffjsi6" path="res://Assets/Graphical Assets/Rooms/attic_sketch.png" id="2_dj34i"]
+[ext_resource type="PackedScene" uid="uid://djijvco3w202v" path="res://Scenes/Losts&Founds/LostTest.tscn" id="3_wo26x"]
+[ext_resource type="PackedScene" uid="uid://cfjn82nev34ws" path="res://Scenes/Losts&Founds/FoundTest.tscn" id="4_di7wv"]
+
+[node name="Attic" type="Control" unique_id=1660816154]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_nsg7n")
+metadata/_custom_type_script = "uid://gxssjaf764gg"
+
+[node name="AtticSketch" type="TextureRect" parent="." unique_id=868101364]
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("2_dj34i")
+
+[node name="LostTest" parent="." unique_id=534757491 instance=ExtResource("3_wo26x")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 706.0
+offset_top = 375.0
+offset_right = 706.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FoundTest" parent="." unique_id=1366859269 instance=ExtResource("4_di7wv")]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 377.0
+offset_right = 706.0
+offset_bottom = 377.0
+
+[connection signal="place_signal" from="FoundTest" to="." method="found_clicked"]

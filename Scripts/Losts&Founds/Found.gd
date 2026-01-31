@@ -3,14 +3,11 @@ class_name Found
 
 var lost_associate: Lost
 
+var nameFound : String = "name not gived"
+
 func associate(l_associate : Lost) -> void:
 	lost_associate = l_associate 
+	lost_associate.found_associate = self
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _to_string() -> String:
+	return "Found : " + nameFound

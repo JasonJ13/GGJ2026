@@ -7,8 +7,8 @@ signal place_signal(found:Found)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _init() -> void:
+	nameFound = "test found"
 
 func _on_button_pressed() -> void:
 	print("found clic")

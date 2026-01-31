@@ -21,16 +21,17 @@ mouse_filter = 2
 texture = ExtResource("3_sg5r5")
 
 [node name="LostTest" parent="." unique_id=534757491 instance=ExtResource("2_sg5r5")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 380.0
-offset_top = 188.0
-offset_right = 380.0
-offset_bottom = 188.0
+offset_left = 705.0
+offset_top = 378.0
+offset_right = 705.0
+offset_bottom = 378.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -41,5 +42,5 @@ offset_top = 377.0
 offset_right = 706.0
 offset_bottom = 377.0
 
-[connection signal="grab_signal" from="LostTest" to="." method="_on_lost_test_grab_signal"]
+[connection signal="grab_signal" from="LostTest" to="." method="found_clicked"]
 [connection signal="place_signal" from="FoundTest" to="." method="_on_found_test_place_signal"]

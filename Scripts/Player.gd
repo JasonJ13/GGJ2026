@@ -1,4 +1,5 @@
 extends Control
+class_name Player
 
 signal left
 signal right
@@ -29,6 +30,7 @@ func check_lost(found : Found) -> void :
 	print(backpack)
 	if found.lost_associate in backpack :
 		backpack.erase(found.lost_associate)
-		found.lost_associate.show()
+		#found.lost_associate.show()
 		found.hide()
+		print("has been placed " + str(found.lost_associate))
 		
