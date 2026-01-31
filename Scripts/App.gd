@@ -5,19 +5,26 @@ extends Control
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var animationMode = animationTree.get("parameters/playback")
 
+@export var nmbRoom : int = 4
 var currentRoom : Room
 var testRoomRess : Resource
-var onMouvement : bool = false
+var onIdle : bool = true
 
-var MonsterLocation : Room
-@export var MonsterCooldown : int
-var MonsterTimer : int
+func get_current_room() -> Room :
+	return currentRoom
+
+var monsterRess : Resource = preload("res://Scenes/Monster/Monster.tscn")
+var monster : Monster
+var monsterIsPresent : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	monster = monsterRess.instantiate()
+	monster.defineApp(self)
+	
 	if isdebug :
-		testRoomRess = preload("res://Scenes/Room/TestRoom.tscn")
+		testRoomRess = preload("res://Scenes/Rooms/TestRoom.tscn")
 		
 		var testRoom1 = testRoomRess.instantiate()
 		testRoom1.set_num(1)
@@ -37,26 +44,62 @@ func _ready() -> void:
 		testRoom1.set_left_room(testRoom4)
 		
 		enter_room(testRoom1, false)
+		monster.location = testRoom3
+		monsterIsPresent = true
 
 func enter_room(new_room : Room, not_first_room = true) -> void:
-	onMouvement = true
 	print(new_room)
 	if not_first_room :
 		self.remove_child(currentRoom)
 	
 	currentRoom = new_room
-	add_child(currentRoom)
+	self.add_child(currentRoom)
+	onIdle = true
 
 
 
 
 func enter_left_room() -> void :
+	onIdle = false
 	animationMode.travel("FadeOutToLeft")
-	enter_room(currentRoom.get_left_room())
 	
 func enter_right_room() -> void :
+	onIdle = false
 	animationMode.travel("FadeOutToRight")
+
+func new_left_room() -> void :
+	enter_room(currentRoom.get_left_room())
+
+func new_right_room() -> void :
 	enter_room(currentRoom.get_right_room())
+
+
+var cooldownMonster : int = 120
+var timerMonster : int = 0
+
+func _process(delta: float) -> void:
 	
-func new_room() -> void :
-	print("enter a new room")
+	if monsterIsPresent :
+		timerMonster += 1
+		
+		if (onIdle && cooldownMonster < timerMonster) :
+			monster.mouvementOpportunity()
+			timerMonster = 0
+
+func monsterToPlayer() -> Array :
+	
+	var roomAct : Room= monster.get_location()
+	var nmbRoomTravel : int = 0
+	
+	while roomAct != currentRoom :
+		roomAct = roomAct.get_left_room()
+		nmbRoomTravel += 1
+		
+	if nmbRoomTravel <= nmbRoom/2 :
+		return [nmbRoomTravel,true]
+	else :
+		return [nmbRoom-nmbRoomTravel, false]
+	
+func monsterMoved() -> void :
+	if monster.get_location() == currentRoom :
+		self.add_child(monster)

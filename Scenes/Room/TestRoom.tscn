@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://d02u228foo4bp"]
-
-[ext_resource type="Script" uid="uid://bl6amof5fsdub" path="res://Scripts/Room/TestRoom.gd" id="1_tw0um"]
-
-[node name="TestRoom" type="Control" unique_id=1660816154]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_tw0um")
-metadata/_custom_type_script = "uid://gxssjaf764gg"
