@@ -33,8 +33,9 @@ label_settings = ExtResource("2_6p01r")
 
 [node name="credit" type="VSplitContainer" parent="VBoxContainer" unique_id=1269451697]
 layout_mode = 2
-split_offsets = PackedInt32Array(0, 0, 0, 0, 0)
+split_offsets = PackedInt32Array(28, 99, 139)
 dragging_enabled = false
+split_offset = 28
 
 [node name="Prog" type="Label" parent="VBoxContainer/credit" unique_id=1156948775]
 layout_mode = 2
@@ -56,17 +57,6 @@ label_settings = ExtResource("3_rc2un")
 [node name="NameGraphicDesign" type="Label" parent="VBoxContainer/credit" unique_id=404430132]
 layout_mode = 2
 text = "    Surement quelqu'un"
-label_settings = ExtResource("3_rc2un")
-vertical_alignment = 2
-
-[node name="SoundDesign" type="Label" parent="VBoxContainer/credit" unique_id=1838395479]
-layout_mode = 2
-text = "SoundDesign"
-label_settings = ExtResource("3_rc2un")
-
-[node name="NameSoundDesign" type="Label" parent="VBoxContainer/credit" unique_id=1338044550]
-layout_mode = 2
-text = "    sherpearce"
 label_settings = ExtResource("3_rc2un")
 vertical_alignment = 2
 

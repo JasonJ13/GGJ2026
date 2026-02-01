@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://bypcifkb5sq7k"]
 
-[ext_resource type="Texture2D" uid="uid://h46vjyffjsi6" path="res://Assets/Graphical Assets/Rooms/attic_sketch.png" id="1_35riq"]
 [ext_resource type="Script" uid="uid://krpdpyikwr1o" path="res://Scripts/Menu/MainMenu.gd" id="1_p4pvn"]
 [ext_resource type="PackedScene" uid="uid://dhjojrg00b857" path="res://Scenes/Monster/Monster.tscn" id="2_mj0i0"]
+[ext_resource type="Texture2D" uid="uid://dd18s6bc1eenf" path="res://Assets/Graphical Assets/Rooms/Attic/attic.png" id="2_shv8k"]
+[ext_resource type="Texture2D" uid="uid://cjbpw6tpm2x4j" path="res://Assets/Graphical Assets/Rooms/Attic/attic_continue.png" id="3_syprg"]
+[ext_resource type="Texture2D" uid="uid://chtheyvucl6hc" path="res://Assets/Graphical Assets/Rooms/Attic/attic_flee.png" id="4_lplmr"]
 [ext_resource type="FontFile" uid="uid://b28l3725otfqc" path="res://Assets/Writing/HelpMe.ttf" id="4_shv8k"]
+[ext_resource type="Texture2D" uid="uid://b6rhayl83laj" path="res://Assets/Graphical Assets/Rooms/Attic/attic_hug.png" id="5_5exbe"]
 [ext_resource type="LabelSettings" uid="uid://b1qvlp5nsm1ts" path="res://Assets/Writing/buttonSetting.tres" id="5_rsxkb"]
 [ext_resource type="PackedScene" uid="uid://cbmb6dlp73g5j" path="res://Scenes/Menu/Option.tscn" id="5_s3ie0"]
+[ext_resource type="Texture2D" uid="uid://cj5hwp3mj3shu" path="res://Assets/Graphical Assets/Rooms/Attic/attic_stay.png" id="6_jmrtg"]
 [ext_resource type="PackedScene" uid="uid://dy6m3yfjfkjvk" path="res://Scenes/Menu/Credits.tscn" id="7_shv8k"]
+[ext_resource type="Texture2D" uid="uid://b5ocuh0vaiksk" path="res://Assets/Graphical Assets/Rooms/Attic/attic_painting.png" id="7_urltk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mj0i0"]
 font = ExtResource("4_shv8k")
@@ -22,14 +27,64 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p4pvn")
 
-[node name="AtticSketch" type="TextureRect" parent="." unique_id=704158975]
+[node name="Attic" type="Control" parent="." unique_id=271209013]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AtticSketch" type="TextureRect" parent="Attic" unique_id=704158975]
 modulate = Color(0.6452097, 0.6452098, 0.6452097, 1)
 layout_mode = 1
 offset_right = 3840.0
 offset_bottom = 2160.0
 scale = Vector2(0.30052084, 0.29930553)
 mouse_filter = 2
-texture = ExtResource("1_35riq")
+texture = ExtResource("2_shv8k")
+
+[node name="AtticSketch2" type="TextureRect" parent="Attic" unique_id=1173332994]
+modulate = Color(0.6452097, 0.6452098, 0.6452097, 1)
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("3_syprg")
+
+[node name="AtticSketch3" type="TextureRect" parent="Attic" unique_id=734051526]
+modulate = Color(0.6452097, 0.6452098, 0.6452097, 1)
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("4_lplmr")
+
+[node name="AtticSketch4" type="TextureRect" parent="Attic" unique_id=669353391]
+modulate = Color(0.6452097, 0.6452098, 0.6452097, 1)
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("5_5exbe")
+
+[node name="AtticSketch5" type="TextureRect" parent="Attic" unique_id=117044578]
+modulate = Color(0.6452097, 0.6452098, 0.6452097, 1)
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("6_jmrtg")
+
+[node name="AtticSketch6" type="TextureRect" parent="Attic" unique_id=871311631]
+modulate = Color(0.6452097, 0.6452098, 0.6452097, 1)
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("7_urltk")
 
 [node name="Monster" parent="." unique_id=95873439 instance=ExtResource("2_mj0i0")]
 modulate = Color(0.5137255, 0.5137255, 0.5137255, 0.7921569)
