@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bimg3w4btwbim" path="res://Scripts/App.gd" id="1_lp4n7"]
 [ext_resource type="PackedScene" uid="uid://bypcifkb5sq7k" path="res://Scenes/Menu/MainMenu.tscn" id="2_pqvxe"]
 [ext_resource type="PackedScene" uid="uid://ncg1vh3wqfec" path="res://Scenes/Menu/LoadingScreen.tscn" id="3_tcqga"]
+[ext_resource type="PackedScene" uid="uid://pj5li4dlaodu" path="res://Scenes/Menu/GameOver.tscn" id="4_3anhv"]
 
 [node name="App" type="Control" unique_id=1783691143]
 layout_mode = 3
@@ -20,4 +21,10 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="GameOver" parent="." unique_id=1588227629 instance=ExtResource("4_3anhv")]
+visible = false
+layout_mode = 1
+
 [connection signal="start" from="MainMenu" to="." method="start_game"]
+[connection signal="mainMenu" from="GameOver" to="." method="return_menu"]
+[connection signal="retry" from="GameOver" to="." method="start_game"]

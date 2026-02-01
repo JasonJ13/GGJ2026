@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_ovk2j")
 
 [node name="Left" type="Label" parent="." unique_id=2025177125]
+z_index = 1
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -29,6 +30,7 @@ text = "LEFT"
 label_settings = ExtResource("2_67pri")
 
 [node name="LeftButton" type="Button" parent="Left" unique_id=689819201]
+z_index = 1
 z_as_relative = false
 layout_mode = 1
 anchors_preset = 15
@@ -38,8 +40,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Right" type="Label" parent="." unique_id=1922773366]
+z_index = 1
 layout_mode = 0
-offset_left = 965.00006
+offset_left = 965.0
 offset_top = 297.0
 offset_right = 1064.0
 offset_bottom = 334.0
@@ -48,6 +51,7 @@ text = "Right"
 label_settings = ExtResource("2_67pri")
 
 [node name="RightButton" type="Button" parent="Right" unique_id=1813775618]
+z_index = 1
 z_as_relative = false
 layout_mode = 1
 anchors_preset = 15

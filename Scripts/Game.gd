@@ -1,11 +1,13 @@
 extends Control
 
-@export var debugRoom : bool = true
+## Pour utiliser les salles tests
+@export var debugRoom : bool = false
 
 @onready var player : Player = $Player
 @onready var animationTree : AnimationTree = $AnimationTree
 @onready var animationMode = animationTree.get("parameters/playback")
 
+## Définir le nombre de salle ! modifie le nombre de salle que dans le cas du Debug Room
 @export var nmbRoom : int = 4
 var currentRoom : Room
 var firstRoom : Room
@@ -17,6 +19,7 @@ var comeFromRight : bool = true
 func get_current_room() -> Room :
 	return currentRoom
 
+## Pour désactiver le monstre
 @export var debug_Monster = true
 var monsterRess : Resource = preload("res://Scenes/Monster/Monster.tscn")
 var monster : Monster
@@ -200,6 +203,8 @@ func monsterMoved() -> void :
 @onready var timerMonsterKill : Timer = $KillTimer
 @onready var timerMonsterRespawn : Timer = $RespawnTimer
 
+signal player_died
+
 func Encounter() -> void:
 	monsterIsIn = true
 	monsterIsPresent = false
@@ -252,7 +257,9 @@ func survive(stay : bool) -> void :
 
 func die() -> void :
 	print("you die")
-	get_tree().reload_current_scene()
+	player_died.emit()
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+	process_mode = Node.PROCESS_MODE_DISABLED
 	
 
 func relocateMonster() -> void:

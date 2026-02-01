@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://pj5li4dlaodu"]
+
+[ext_resource type="Script" uid="uid://clqwrdrkirf2s" path="res://Scripts/Menu/GameOver.gd" id="1_cxt13"]
+[ext_resource type="LabelSettings" uid="uid://206kybgmafw6" path="res://Assets/Writing/titleGameOverSetting.tres" id="1_kmgro"]
+[ext_resource type="LabelSettings" uid="uid://bj0pcymkndgdc" path="res://Assets/Writing/buttonGameOverSetting.tres" id="2_kmgro"]
+
+[sub_resource type="Animation" id="Animation_cxt13"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.115162365, 0.10527813, 0.013758885, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0pq3r"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.6431373, 0, 0.0627451, 1), Color(0.115162365, 0.10527813, 0.013758885, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1g37"]
+_data = {
+&"RESET": SubResource("Animation_cxt13"),
+&"die": SubResource("Animation_0pq3r")
+}
+
+[node name="GameOver" type="Control" unique_id=1588227629]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cxt13")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=468595767]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.115162365, 0.10527813, 0.013758885, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=497443794]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1573670182]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = ExtResource("1_kmgro")
+
+[node name="Control3" type="Control" parent="VBoxContainer" unique_id=1308697975]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Score" type="Label" parent="VBoxContainer" unique_id=1217399840]
+layout_mode = 2
+text = "Score :
+Time survive :"
+label_settings = ExtResource("2_kmgro")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer" unique_id=2001187076]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Retry" type="Label" parent="VBoxContainer" unique_id=104895532]
+z_index = 1
+layout_mode = 2
+text = "Retry"
+label_settings = ExtResource("2_kmgro")
+horizontal_alignment = 1
+
+[node name="ButtonRetry" type="Button" parent="VBoxContainer/Retry" unique_id=1738018484]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1729072442]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MainMenu" type="Label" parent="VBoxContainer" unique_id=290059228]
+z_index = 1
+layout_mode = 2
+text = "Back To Menu"
+label_settings = ExtResource("2_kmgro")
+horizontal_alignment = 1
+
+[node name="ButtonMainMenu" type="Button" parent="VBoxContainer/MainMenu" unique_id=507998911]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1502686111]
+libraries/ = SubResource("AnimationLibrary_m1g37")
+autoplay = &"die"
+
+[connection signal="pressed" from="VBoxContainer/Retry/ButtonRetry" to="." method="press_Retry"]
+[connection signal="pressed" from="VBoxContainer/MainMenu/ButtonMainMenu" to="." method="press_MainMenu"]

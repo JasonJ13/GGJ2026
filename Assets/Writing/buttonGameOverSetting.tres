@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bj0pcymkndgdc"]
+
+[ext_resource type="FontFile" uid="uid://b28l3725otfqc" path="res://Assets/Writing/HelpMe.ttf" id="1_bq2pf"]
+
+[resource]
+font = ExtResource("1_bq2pf")
+font_size = 32
+font_color = Color(0.6431373, 0, 0.0627451, 1)
