@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://c5ca4qr1uhji0"]
 
 [ext_resource type="Script" uid="uid://cp2v00x1a5bs0" path="res://Scripts/Rooms/Bedroom.gd" id="1_d2b5o"]
-[ext_resource type="Texture2D" uid="uid://c6y2y4wr2ld3a" path="res://Assets/Graphical Assets/Rooms/livingroom_sketch.png" id="2_7x63e"]
+[ext_resource type="Texture2D" uid="uid://cx057o876dtff" path="res://Assets/Graphical Assets/Rooms/Livingroom/livingroom.png" id="2_hgpqr"]
 [ext_resource type="PackedScene" uid="uid://bimcbqb4ldp4r" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_04jel"]
+[ext_resource type="Texture2D" uid="uid://cfu8sd4a5hkrk" path="res://Assets/Graphical Assets/Rooms/Livingroom/livingroom_painting.png" id="3_flbto"]
 [ext_resource type="PackedScene" uid="uid://bhrvtcvnh2yp3" path="res://Scenes/Losts&Founds/Found.tscn" id="4_da8sn"]
+[ext_resource type="Texture2D" uid="uid://us1qhklf48hs" path="res://Assets/Graphical Assets/Rooms/Livingroom/livingroom_chair.png" id="6_xrgop"]
+[ext_resource type="Texture2D" uid="uid://cnlxnf1wvkfd7" path="res://Assets/Graphical Assets/Rooms/Livingroom/livingroom_plant.png" id="7_f4e0f"]
 
 [node name="Livingroom" type="Control" unique_id=1660816154]
 layout_mode = 3
@@ -18,15 +21,67 @@ offset_right = 3840.0
 offset_bottom = 2160.0
 scale = Vector2(0.30052084, 0.29930553)
 mouse_filter = 2
-texture = ExtResource("2_7x63e")
+texture = ExtResource("2_hgpqr")
+
+[node name="PaintLostBg" type="TextureRect" parent="." unique_id=1415633938]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("3_flbto")
 
 [node name="PaintLost" parent="." unique_id=741506032 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_04jel")]
 layout_mode = 0
 found_associate = NodePath("../PaintFound")
 
-[node name="PaintFound" parent="." unique_id=551221148 instance=ExtResource("4_da8sn")]
+[node name="PaintFound" parent="." unique_id=551221148 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_da8sn")]
 layout_mode = 0
-offset_left = 590.0
-offset_top = 210.0
-offset_right = 590.0
-offset_bottom = 210.0
+offset_left = 582.0
+offset_top = 174.0
+offset_right = 582.0
+offset_bottom = 174.0
+lost_associate = NodePath("../PaintLost")
+texture_associate = NodePath("../PaintLostBg")
+
+[node name="ChairLostBg" type="TextureRect" parent="." unique_id=827839458]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("6_xrgop")
+
+[node name="ChairLost" parent="." unique_id=1256028539 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_04jel")]
+layout_mode = 0
+found_associate = NodePath("../ChairFound")
+
+[node name="ChairFound" parent="." unique_id=279376770 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_da8sn")]
+layout_mode = 0
+offset_left = 174.90312
+offset_top = 52.079163
+offset_right = 174.90312
+offset_bottom = 52.079163
+lost_associate = NodePath("../ChairLost")
+texture_associate = NodePath("../ChairLostBg")
+
+[node name="PlantLostBg" type="TextureRect" parent="." unique_id=1111814666]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("7_f4e0f")
+
+[node name="PlantLost" parent="." unique_id=2023607285 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_04jel")]
+layout_mode = 0
+found_associate = NodePath("../PlantFound")
+
+[node name="PlantFound" parent="." unique_id=1790916459 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_da8sn")]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 174.0
+offset_right = 582.0
+offset_bottom = 174.0
+lost_associate = NodePath("../PlantLost")
+texture_associate = NodePath("../PlantLostBg")
