@@ -6,8 +6,6 @@ class_name Found
 
 signal place_signal(found:Found)
 
-var nameFound : String = "name not gived"
-
 func _ready() -> void :
 	$Button.flat = true
 
@@ -16,7 +14,7 @@ func associate(l_associate : Lost) -> void:
 	lost_associate.found_associate = self
 
 func _to_string() -> String:
-	return "Found : " + nameFound
+	return "Found : " + self.name
 
 
 func _on_button_pressed() -> void:

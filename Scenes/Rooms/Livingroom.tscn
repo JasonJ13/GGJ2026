@@ -20,12 +20,10 @@ scale = Vector2(0.30052084, 0.29930553)
 mouse_filter = 2
 texture = ExtResource("2_7x63e")
 
-[node name="Lost2" parent="." unique_id=741506032 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_04jel")]
+[node name="Lost2" parent="." unique_id=741506032 instance=ExtResource("3_04jel")]
 layout_mode = 0
-found_associate = NodePath("")
 
-[node name="Found2" parent="." unique_id=551221148 node_paths=PackedStringArray("lost_associate") instance=ExtResource("4_da8sn")]
+[node name="Found2" parent="." unique_id=551221148 instance=ExtResource("4_da8sn")]
 layout_mode = 0
 offset_left = 0.0
 offset_right = 0.0
-lost_associate = NodePath("")

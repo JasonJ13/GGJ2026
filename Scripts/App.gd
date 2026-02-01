@@ -159,7 +159,7 @@ func new_right_room() -> void :
 var cooldownMonster : int = 120
 var timerMonsterMouvement : int = 0
 
-enum Reaction {CONTINUE,HUG,FLEE}
+enum Reaction {CONTINUE, HUG, FLEE, STAY, STOLEN}
 
 #region Mouvement du Monstre
 
@@ -202,11 +202,15 @@ func monsterMoved() -> void :
 func Encounter() -> void:
 	monsterIsIn = true
 	monsterIsPresent = false
-	animationTree.set("parameters/conditions/Stay",false)
+	animationTree.set("parameters/conditions/MonsterIsOut",false)
 	animationTree.set("parameters/conditions/MonsterIsIn",true)
 	self.add_child(monster)
 	if monster.get_Mask() == Monster.Mask.DANGER :
-		print("take one hint")
+		if player.lostHint() :
+			react(Reaction.STOLEN)
+		else :
+			die()
+	
 	else :
 		timerMonsterKill.start()
 		print("wait for reaction")
@@ -214,25 +218,34 @@ func Encounter() -> void:
 func react(reaction : Reaction) -> void :
 	monsterIsIn = false
 	animationTree.set("parameters/conditions/MonsterIsIn",false)
+	animationTree.set("parameters/conditions/MonsterIsOut",true)
 	match [reaction, monster.get_Mask()] :
 		[Reaction.FLEE, Monster.Mask.FLEE]  :
 			if comeFromRight :
 				enter_left_room()
 			else :
 				enter_right_room()
-			survive()
+			survive(false)
 		
 		[Reaction.CONTINUE, Monster.Mask.CONTINUE] :
 			if comeFromRight :
 				enter_right_room()
 			else :
 				enter_left_room()
-			survive()
+			survive(false)
 		
+		[Reaction.HUG, Monster.Mask.CUTE], [Reaction.STAY, Monster.Mask.STAY], [Reaction.STOLEN,Monster.Mask.DANGER] :
+			survive(true)
+			
 		_ :
 			die()
 
-func survive() -> void :
+func survive(stay : bool) -> void :
+	if stay :
+		animationTree.set("parameters/conditions/Stay",true)
+	
+	animationTree.set("parameters/conditions/MonsterIsIn",false)
+	animationTree.set("parameters/conditions/MonsterIsOut",true)
 	print("you survived")
 	remove_child(monster)
 	monster.disepear()
@@ -241,8 +254,7 @@ func survive() -> void :
 
 func die() -> void :
 	print("you die")
-	enter_left_room()
-	survive()
+	get_tree().reload_current_scene()
 	
 
 func relocateMonster() -> void:

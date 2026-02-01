@@ -7,7 +7,7 @@ var location : Room
 var chance_to_move : int = 50
 
 enum Mask {CONTINUE, CUTE, DANGER, FLEE, STAY}
-var mask : Mask = Mask.FLEE
+var mask : Mask = Mask.STAY
 
 @onready var timerRespawn : Timer = $Respawn
 
@@ -57,7 +57,6 @@ func relocate() :
 		location = app.get_firstRoom()
 	else :
 		location = app.get_middleRoom()
-	print(location)
 	
 
 func get_Mask() -> Mask :
