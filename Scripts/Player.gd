@@ -34,3 +34,11 @@ func check_lost(found : Found) -> void :
 		found.hide()
 		print("has been placed " + str(found.lost_associate))
 		
+
+func lostHint() -> bool :
+	if backpack.is_empty() :
+		return false
+	
+	else :
+		backpack.pop_front()
+		return true

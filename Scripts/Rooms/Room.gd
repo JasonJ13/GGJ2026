@@ -1,8 +1,6 @@
 extends Control
 class_name Room
 
-var name_room : String
-
 var position_losts : Vector2
 
 var left_room : Room
@@ -24,7 +22,7 @@ func get_right_room() -> Room:
 	return right_room
 
 func _to_string() -> String:
-	return "Salle : " + name_room
+	return "Salle : " + self.name
 
 func found_clicked(found: Found) -> void:
 	print("chek room found place ", str(self))
