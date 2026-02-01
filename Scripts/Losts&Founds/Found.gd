@@ -2,6 +2,7 @@ extends Control
 class_name Found
 
 @export var lost_associate: Lost
+@export var texture_associate : TextureRect
 
 
 signal place_signal(found:Found)
@@ -18,4 +19,9 @@ func _to_string() -> String:
 
 
 func _on_button_pressed() -> void:
+	print(self)
 	place_signal.emit(self)
+
+func replace() :
+	hide()
+	texture_associate.show()
