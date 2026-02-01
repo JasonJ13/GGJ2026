@@ -24,8 +24,7 @@ func check_lost(found : Found) -> void :
 	print(backpack)
 	if found.lost_associate in backpack :
 		backpack.erase(found.lost_associate)
-		#found.lost_associate.show()
-		found.hide()
+		found.replace()
 		print("has been placed " + str(found.lost_associate))
 		
 		score += 1

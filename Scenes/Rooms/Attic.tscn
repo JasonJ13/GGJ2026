@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://bo17inxa05dq3"]
 
 [ext_resource type="Script" uid="uid://bmjfuehra76k3" path="res://Scripts/Rooms/Attic.gd" id="1_nsg7n"]
-[ext_resource type="Texture2D" uid="uid://h46vjyffjsi6" path="res://Assets/Graphical Assets/Rooms/attic_sketch.png" id="2_dj34i"]
+[ext_resource type="Texture2D" uid="uid://dd18s6bc1eenf" path="res://Assets/Graphical Assets/Rooms/Attic/attic.png" id="2_dj34i"]
 [ext_resource type="PackedScene" uid="uid://bimcbqb4ldp4r" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_nsg7n"]
+[ext_resource type="Texture2D" uid="uid://cjbpw6tpm2x4j" path="res://Assets/Graphical Assets/Rooms/Attic/attic_continue.png" id="3_uocy3"]
 [ext_resource type="PackedScene" uid="uid://bhrvtcvnh2yp3" path="res://Scenes/Losts&Founds/Found.tscn" id="4_dj34i"]
+[ext_resource type="Texture2D" uid="uid://b6rhayl83laj" path="res://Assets/Graphical Assets/Rooms/Attic/attic_hug.png" id="4_wo26x"]
+[ext_resource type="Texture2D" uid="uid://chtheyvucl6hc" path="res://Assets/Graphical Assets/Rooms/Attic/attic_flee.png" id="4_xinkf"]
+[ext_resource type="Texture2D" uid="uid://cj5hwp3mj3shu" path="res://Assets/Graphical Assets/Rooms/Attic/attic_stay.png" id="5_suro6"]
+[ext_resource type="Texture2D" uid="uid://br3pe7vminau0" path="res://Assets/Graphical Assets/Losts/Attic/mask_hug.png" id="6_wo26x"]
+[ext_resource type="Texture2D" uid="uid://25n686ab336o" path="res://Assets/Graphical Assets/Losts/Attic/mask_flee.png" id="10_suro6"]
+[ext_resource type="Texture2D" uid="uid://u1qovqrip7fc" path="res://Assets/Graphical Assets/Losts/Attic/mask_continue.png" id="11_8333t"]
 
 [node name="Attic" type="Control" unique_id=1660816154]
 layout_mode = 3
@@ -20,12 +27,106 @@ scale = Vector2(0.30052084, 0.29930553)
 mouse_filter = 2
 texture = ExtResource("2_dj34i")
 
-[node name="Lost" parent="." unique_id=534757491 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_nsg7n")]
-layout_mode = 0
-found_associate = NodePath("../Found")
+[node name="ContinueMaskBg" type="TextureRect" parent="." unique_id=1623372068]
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("3_uocy3")
 
-[node name="Found" parent="." unique_id=1366859269 node_paths=PackedStringArray("lost_associate") instance=ExtResource("4_dj34i")]
+[node name="FleeMaskBg" type="TextureRect" parent="." unique_id=800851597]
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("4_xinkf")
+
+[node name="StayMaskBg" type="TextureRect" parent="." unique_id=1685736639]
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("5_suro6")
+
+[node name="HugMaskBg" type="TextureRect" parent="." unique_id=822838773]
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("4_wo26x")
+
+[node name="MaskHugFound" parent="." unique_id=1366859269 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_dj34i")]
 layout_mode = 0
-offset_left = 0.0
-offset_right = 0.0
-lost_associate = NodePath("../Lost")
+offset_left = 482.0
+offset_top = 256.0
+offset_right = 482.0
+offset_bottom = 256.0
+lost_associate = NodePath("../MaskHugLost")
+texture_associate = NodePath("../HugMaskBg")
+
+[node name="MaskHugLost" parent="." unique_id=534757491 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_nsg7n")]
+visible = false
+layout_mode = 0
+scale = Vector2(0.02, 0.02)
+found_associate = NodePath("../MaskHugFound")
+button_icon = ExtResource("6_wo26x")
+
+[node name="MaskFleeFound" parent="." unique_id=551221148 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_dj34i")]
+layout_mode = 0
+offset_left = 964.0
+offset_top = 512.0
+offset_right = 964.0
+offset_bottom = 512.0
+lost_associate = NodePath("../MaskFleeLost")
+texture_associate = NodePath("../FleeMaskBg")
+
+[node name="MaskFleeLost" parent="." unique_id=741506032 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_nsg7n")]
+visible = false
+layout_mode = 0
+scale = Vector2(0.02, 0.02)
+found_associate = NodePath("../MaskFleeFound")
+button_icon = ExtResource("10_suro6")
+
+[node name="MaskContinueFound" parent="." unique_id=1254925507 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_dj34i")]
+layout_mode = 0
+offset_left = 1928.0
+offset_top = 1024.0
+offset_right = 1928.0
+offset_bottom = 1024.0
+lost_associate = NodePath("../MaskContinueLost")
+texture_associate = NodePath("../ContinueMaskBg")
+
+[node name="MaskContinueLost" parent="." unique_id=1841191163 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_nsg7n")]
+visible = false
+layout_mode = 0
+offset_left = 964.0
+offset_top = 512.0
+offset_right = 964.0
+offset_bottom = 512.0
+scale = Vector2(0.02, 0.02)
+found_associate = NodePath("../MaskContinueFound")
+button_icon = ExtResource("11_8333t")
+
+[node name="MaskStayFound" parent="." unique_id=1497149870 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_dj34i")]
+layout_mode = 0
+offset_left = 3856.0
+offset_top = 2048.0
+offset_right = 3856.0
+offset_bottom = 2048.0
+lost_associate = NodePath("../MaskStayLost")
+texture_associate = NodePath("../StayMaskBg")
+
+[node name="MaskStayLost" parent="." unique_id=1211066579 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_nsg7n")]
+visible = false
+layout_mode = 0
+offset_left = 2892.0
+offset_top = 1536.0
+offset_right = 2892.0
+offset_bottom = 1536.0
+scale = Vector2(0.02, 0.02)
+found_associate = NodePath("../MaskStayFound")
+button_icon = ExtResource("11_8333t")

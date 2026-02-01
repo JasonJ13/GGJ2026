@@ -14,6 +14,7 @@ var isLost = false
 signal grab_signal(found:Found)
 
 func _on_button_pressed() -> void:
+	print (self)
 	if isLost :
 		grab_signal.emit(self)
 
