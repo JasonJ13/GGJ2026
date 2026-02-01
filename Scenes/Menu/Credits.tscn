@@ -34,6 +34,7 @@ label_settings = ExtResource("2_6p01r")
 [node name="credit" type="VSplitContainer" parent="VBoxContainer" unique_id=1269451697]
 layout_mode = 2
 split_offsets = PackedInt32Array(0, 0, 0, 0, 0)
+dragging_enabled = false
 
 [node name="Prog" type="Label" parent="VBoxContainer/credit" unique_id=1156948775]
 layout_mode = 2
