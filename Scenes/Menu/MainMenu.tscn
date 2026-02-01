@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://bypcifkb5sq7k"]
+
+[ext_resource type="Texture2D" uid="uid://h46vjyffjsi6" path="res://Assets/Graphical Assets/Rooms/attic_sketch.png" id="1_35riq"]
+[ext_resource type="FontFile" uid="uid://cwqqaevo84g15" path="res://Assets/Writing/RunFont.otf" id="1_a2ivp"]
+[ext_resource type="Script" uid="uid://krpdpyikwr1o" path="res://Scripts/Menu/MainMenu.gd" id="1_p4pvn"]
+[ext_resource type="PackedScene" uid="uid://dhjojrg00b857" path="res://Scenes/Monster/Monster.tscn" id="2_mj0i0"]
+[ext_resource type="LabelSettings" uid="uid://b1qvlp5nsm1ts" path="res://Assets/Writing/buttonSetting.tres" id="5_rsxkb"]
+[ext_resource type="PackedScene" uid="uid://cbmb6dlp73g5j" path="res://Scenes/Menu/Option.tscn" id="5_s3ie0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mj0i0"]
+font = ExtResource("1_a2ivp")
+font_size = 72
+font_color = Color(0.45490196, 1, 0.40392157, 1)
+
+[node name="MainMenu" type="Control" unique_id=2027140552]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p4pvn")
+
+[node name="AtticSketch" type="TextureRect" parent="." unique_id=704158975]
+modulate = Color(0.6452097, 0.6452098, 0.6452097, 1)
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.30052084, 0.29930553)
+mouse_filter = 2
+texture = ExtResource("1_35riq")
+
+[node name="Monster" parent="." unique_id=95873439 instance=ExtResource("2_mj0i0")]
+modulate = Color(0.5137255, 0.5137255, 0.5137255, 0.7921569)
+layout_mode = 1
+offset_left = 589.0
+offset_top = 452.00006
+offset_right = 589.0
+offset_bottom = 452.00006
+rotation = -0.36944062
+scale = Vector2(2, 2)
+in_menu = true
+
+[node name="FirstLayer" type="VBoxContainer" parent="." unique_id=2032095221]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = 19.0
+offset_right = 116.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="FirstLayer" unique_id=1500530004]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+text = "Title"
+label_settings = SubResource("LabelSettings_mj0i0")
+
+[node name="Start" type="Label" parent="FirstLayer" unique_id=1717304089]
+z_index = 1
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Start"
+label_settings = ExtResource("5_rsxkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="FirstLayer/Start" unique_id=2128226449]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Setting" type="Label" parent="FirstLayer" unique_id=52267202]
+z_index = 1
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Setting"
+label_settings = ExtResource("5_rsxkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingButton" type="Button" parent="FirstLayer/Setting" unique_id=107701593]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Credit" type="Label" parent="FirstLayer" unique_id=993905000]
+z_index = 1
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Credit"
+label_settings = ExtResource("5_rsxkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditButton" type="Button" parent="FirstLayer/Credit" unique_id=258800395]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quit" type="Label" parent="FirstLayer" unique_id=1038113880]
+z_index = 1
+layout_mode = 2
+text = "Quit"
+label_settings = ExtResource("5_rsxkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="FirstLayer/Quit" unique_id=1933715041]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Option" parent="." unique_id=700068241 instance=ExtResource("5_s3ie0")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="FirstLayer/Start/StartButton" to="." method="start_pressed"]
+[connection signal="pressed" from="FirstLayer/Setting/SettingButton" to="." method="setting_pressed"]
+[connection signal="pressed" from="FirstLayer/Credit/CreditButton" to="." method="credit_pressed"]
+[connection signal="pressed" from="FirstLayer/Quit/QuitButton" to="." method="quit_pressed"]

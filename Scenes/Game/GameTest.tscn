@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://qhrd5mgx66u5"]
 
-[ext_resource type="Script" uid="uid://jsjr38x6xgjg" path="res://Scripts/app_test.gd" id="1_kookg"]
+[ext_resource type="Script" uid="uid://jsjr38x6xgjg" path="res://Scripts/Game_test.gd" id="1_kookg"]
 [ext_resource type="PackedScene" uid="uid://d02u228foo4bp" path="res://Scenes/Rooms/TestRoom.tscn" id="2_67evc"]
-[ext_resource type="PackedScene" uid="uid://bdgoyj2g1b5er" path="res://Scenes/Player.tscn" id="3_67evc"]
+[ext_resource type="PackedScene" uid="uid://bdgoyj2g1b5er" path="res://Scenes/Game/Player.tscn" id="3_67evc"]
 
 [node name="AppTest" type="Control" unique_id=1562605107]
 layout_mode = 3

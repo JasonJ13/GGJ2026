@@ -1,0 +1,325 @@
+[gd_scene format=3 uid="uid://cpuounrabj7xp"]
+
+[ext_resource type="Script" uid="uid://3vkkdkpvex2c" path="res://Scripts/Game.gd" id="1_gl6un"]
+[ext_resource type="PackedScene" uid="uid://bdgoyj2g1b5er" path="res://Scenes/Game/Player.tscn" id="2_j5yw3"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pqvxe"]
+animation = &"FadeIn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tcqga"]
+animation = &"FadeOutToLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r41ji"]
+animation = &"FadeOutToRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lbrif"]
+animation = &"MonsterPresent"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3anhv"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r41ji"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lbrif"]
+advance_mode = 2
+advance_condition = &"GoLeft"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sg4pn"]
+advance_mode = 2
+advance_condition = &"GoRight"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcqga"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3anhv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ej6dk"]
+advance_mode = 2
+advance_condition = &"Stay"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xtcln"]
+advance_mode = 2
+advance_condition = &"GoLeft"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3vx3j"]
+advance_mode = 2
+advance_condition = &"GoRight"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6rx26"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"MonsterIsIn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pqvxe"]
+advance_mode = 2
+advance_condition = &"MonsterIsIn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hptpf"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"MonsterIsOut"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pqvxe"]
+states/End/position = Vector2(983.2, 101.52272)
+states/FadeIn/node = SubResource("AnimationNodeAnimation_pqvxe")
+states/FadeIn/position = Vector2(562.07465, 92.85164)
+states/FadeOutToLeft/node = SubResource("AnimationNodeAnimation_tcqga")
+states/FadeOutToLeft/position = Vector2(637.0965, -39.390366)
+states/FadeOutToRight/node = SubResource("AnimationNodeAnimation_r41ji")
+states/FadeOutToRight/position = Vector2(637.1598, 244.56064)
+states/MonsterPresent/node = SubResource("AnimationNodeAnimation_lbrif")
+states/MonsterPresent/position = Vector2(778.23865, 93.045)
+states/RESET/node = SubResource("AnimationNodeAnimation_3anhv")
+states/RESET/position = Vector2(296.47458, 101.061714)
+states/Start/position = Vector2(149.6, 100.24008)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_r41ji"), "RESET", "FadeOutToLeft", SubResource("AnimationNodeStateMachineTransition_lbrif"), "RESET", "FadeOutToRight", SubResource("AnimationNodeStateMachineTransition_sg4pn"), "FadeOutToRight", "FadeIn", SubResource("AnimationNodeStateMachineTransition_tcqga"), "FadeOutToLeft", "FadeIn", SubResource("AnimationNodeStateMachineTransition_3anhv"), "MonsterPresent", "FadeIn", SubResource("AnimationNodeStateMachineTransition_ej6dk"), "MonsterPresent", "FadeOutToLeft", SubResource("AnimationNodeStateMachineTransition_xtcln"), "MonsterPresent", "FadeOutToRight", SubResource("AnimationNodeStateMachineTransition_3vx3j"), "FadeIn", "MonsterPresent", SubResource("AnimationNodeStateMachineTransition_6rx26"), "RESET", "FadeIn", SubResource("AnimationNodeStateMachineTransition_pqvxe"), "FadeIn", "RESET", SubResource("AnimationNodeStateMachineTransition_hptpf")]
+graph_offset = Vector2(116.07456, 113.81348)
+
+[sub_resource type="Animation" id="Animation_tcqga"]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTree:parameters/conditions/Stay")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3anhv"]
+resource_name = "FadeOut"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3vx3j"]
+resource_name = "FadeOutToLeft"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Color(0, 0, 0, 0.39215687), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"new_left_room"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pqvxe"]
+resource_name = "FadeOutToRight"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Color(0, 0, 0, 0.39215687), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(-1152, 0), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"new_right_room"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lbrif"]
+resource_name = "MonsterPresent"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.2509804), Color(0, 0, 0, 0.7529412), Color(0, 0, 0, 0.2509804), Color(0, 0, 0, 0.7529412), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r41ji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationTree:parameters/conditions/Stay")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbrif"]
+_data = {
+&"FadeIn": SubResource("Animation_tcqga"),
+&"FadeOut": SubResource("Animation_3anhv"),
+&"FadeOutToLeft": SubResource("Animation_3vx3j"),
+&"FadeOutToRight": SubResource("Animation_pqvxe"),
+&"MonsterPresent": SubResource("Animation_lbrif"),
+&"RESET": SubResource("Animation_r41ji")
+}
+
+[node name="Game" type="Control" unique_id=423688090]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gl6un")
+debugRoom = false
+
+[node name="Player" parent="." unique_id=2132586905 instance=ExtResource("2_j5yw3")]
+clip_contents = false
+layout_mode = 1
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=2088530074]
+tree_root = SubResource("AnimationNodeStateMachine_pqvxe")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/GoLeft = false
+parameters/conditions/GoRight = false
+parameters/conditions/MonsterIsIn = false
+parameters/conditions/MonsterIsOut = true
+parameters/conditions/Stay = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=947932303]
+libraries/ = SubResource("AnimationLibrary_lbrif")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1046974820]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="KillTimer" type="Timer" parent="." unique_id=252207432]
+wait_time = 5.0
+one_shot = true
+
+[node name="RespawnTimer" type="Timer" parent="." unique_id=1850886962]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="give_lost" from="Player" to="." method="player_give_lost"]
+[connection signal="left" from="Player" to="." method="enter_left_room"]
+[connection signal="right" from="Player" to="." method="enter_right_room"]
+[connection signal="timeout" from="KillTimer" to="." method="react" binds= [3]]
+[connection signal="timeout" from="RespawnTimer" to="." method="relocateMonster"]

@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cbmb6dlp73g5j"]
+
+[ext_resource type="Script" uid="uid://c45xmge2mdloa" path="res://Scripts/Menu/option.gd" id="1_2npdb"]
+[ext_resource type="FontFile" uid="uid://cwqqaevo84g15" path="res://Assets/Writing/RunFont.otf" id="2_25knl"]
+[ext_resource type="LabelSettings" uid="uid://b1qvlp5nsm1ts" path="res://Assets/Writing/buttonSetting.tres" id="2_y5idb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4vgua"]
+font = ExtResource("2_25knl")
+font_size = 48
+font_color = Color(1.92523e-07, 0.7774816, 0.1257864, 1)
+
+[node name="Option" type="Control" unique_id=700068241]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2npdb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1642154256]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=983593511]
+layout_mode = 2
+text = "Sound"
+label_settings = SubResource("LabelSettings_4vgua")
+horizontal_alignment = 1
+
+[node name="Main" type="HBoxContainer" parent="VBoxContainer" unique_id=1040432436]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Main" unique_id=378400673]
+custom_minimum_size = Vector2(158, 0)
+layout_mode = 2
+text = "Main"
+label_settings = ExtResource("2_y5idb")
+horizontal_alignment = 1
+
+[node name="MainBar" type="HScrollBar" parent="VBoxContainer/Main" unique_id=1242518625]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+
+[node name="SFX" type="HBoxContainer" parent="VBoxContainer" unique_id=1882104666]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/SFX" unique_id=1954254042]
+custom_minimum_size = Vector2(158, 0)
+layout_mode = 2
+text = "SFX"
+label_settings = ExtResource("2_y5idb")
+horizontal_alignment = 1
+
+[node name="HScrollBar" type="HScrollBar" parent="VBoxContainer/SFX" unique_id=232519953]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+
+[node name="Music" type="HBoxContainer" parent="VBoxContainer" unique_id=1735174787]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Music" unique_id=1344372139]
+custom_minimum_size = Vector2(158, 0)
+layout_mode = 2
+text = "MUSIC"
+label_settings = ExtResource("2_y5idb")
+horizontal_alignment = 1
+
+[node name="HScrollBar" type="HScrollBar" parent="VBoxContainer/Music" unique_id=472246550]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+
+[node name="Back" type="Label" parent="VBoxContainer" unique_id=1255378333]
+z_index = 1
+layout_mode = 2
+text = "BACK"
+label_settings = ExtResource("2_y5idb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/Back" unique_id=161724988]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -6,10 +6,20 @@ var app : Control
 var location : Room
 var chance_to_move : int = 50
 
+@export var in_menu : bool = false
+
 enum Mask {CONTINUE, CUTE, DANGER, FLEE, STAY}
-var mask : Mask = Mask.STAY
+@export var mask : Mask
+@onready var textureMask : Array[Node] = $Head.get_children()
 
 @onready var timerRespawn : Timer = $Respawn
+
+signal is_huged
+
+
+func _ready() -> void:
+	if in_menu :
+		$SwitchMask.play("Maskswitch")
 
 func get_location() -> Room :
 	return location
@@ -53,6 +63,8 @@ func disepear() :
 	location = null
 
 func relocate() :
+	change_mask()
+	
 	if app.get_currentRoom() != app.get_firstRoom() :
 		location = app.get_firstRoom()
 	else :
@@ -61,3 +73,17 @@ func relocate() :
 
 func get_Mask() -> Mask :
 	return mask
+
+func change_mask(new_mask : int = -1) -> void :
+	if new_mask == -1 :
+		new_mask = randi() % 4
+		mask = (new_mask + int(new_mask >= mask)) as Mask
+	else :
+		mask = new_mask as Mask
+	
+	textureMask.map(func(t) : t.hide())
+	textureMask[mask].show()
+
+
+func huged() -> void:
+	is_huged.emit()

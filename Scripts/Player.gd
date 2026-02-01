@@ -3,17 +3,11 @@ class_name Player
 
 signal left
 signal right
-signal object_associated
+signal give_lost
 
 var backpack: Array [Lost]
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var score : int = 0
 
 func _on_left_button_pressed() -> void:
 	left.emit()
@@ -34,11 +28,18 @@ func check_lost(found : Found) -> void :
 		found.hide()
 		print("has been placed " + str(found.lost_associate))
 		
+		score += 1
+		
 
 func lostHint() -> bool :
+	return true
 	if backpack.is_empty() :
 		return false
 	
 	else :
 		backpack.pop_front()
 		return true
+
+
+func _on_lost_case_pressed() -> void:
+	give_lost.emit()

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cp2v00x1a5bs0" path="res://Scripts/Rooms/Bedroom.gd" id="1_xqpxp"]
 [ext_resource type="Texture2D" uid="uid://bv8gflwak5rdj" path="res://Assets/Graphical Assets/Rooms/kitchen_sketch.png" id="2_c6usg"]
-[ext_resource type="PackedScene" uid="uid://ddlb6d0d82a31" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_4lad2"]
-[ext_resource type="PackedScene" uid="uid://bqdbojfeukcli" path="res://Scenes/Losts&Founds/Found.tscn" id="4_ociu6"]
+[ext_resource type="PackedScene" uid="uid://bimcbqb4ldp4r" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_4lad2"]
+[ext_resource type="PackedScene" uid="uid://bhrvtcvnh2yp3" path="res://Scenes/Losts&Founds/Found.tscn" id="4_ociu6"]
 
 [node name="Kitchen" type="Control" unique_id=1660816154]
 layout_mode = 3
@@ -25,3 +25,5 @@ layout_mode = 0
 
 [node name="Found" parent="." unique_id=1366859269 instance=ExtResource("4_ociu6")]
 layout_mode = 0
+offset_left = 0.0
+offset_right = 0.0
