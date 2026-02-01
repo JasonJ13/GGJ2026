@@ -288,3 +288,25 @@ func player_give_lost() -> void:
 	if monsterIsIn :
 		if player.lostHint() :
 			react(Reaction.STOLEN)
+			
+func choose_room_from() -> Room:
+	var get_lost_room = currentRoom
+	var nb = randi_range(1,nmbRoom-1)
+	for i in range (nb):
+		get_lost_room = get_lost_room.get_left_room()
+	return get_lost_room
+		
+func choose_room_to(lostRoom : Room) -> Room:
+	var get_place_room = lostRoom
+	var nb = randi_range(1,nmbRoom-1)
+	for i in range (nb):
+		get_place_room = get_place_room.get_left_room()
+		if (get_place_room == currentRoom):
+			get_place_room = get_place_room.get_left_room()
+	return get_place_room
+	
+func place_new_lost() -> void:
+	var room_from = choose_room_from()
+	var lost = room_from.get_random_lost()
+	var room_to = choose_room_to(room_from)
+	room_to.set_random_pos_lost(lost)
