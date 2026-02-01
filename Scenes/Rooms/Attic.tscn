@@ -18,6 +18,9 @@ anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_nsg7n")
 losts = [NodePath("MaskHugLost"), NodePath("MaskFleeLost"), NodePath("MaskContinueLost"), NodePath("MaskStayLost")]
+nmb_losts = 4
+posLosts = Array[Vector2]([Vector2(277, 515), Vector2(796, 240), Vector2(897, 514)])
+nmb_posLosts = 3
 metadata/_custom_type_script = "uid://gxssjaf764gg"
 
 [node name="AtticSketch" type="TextureRect" parent="." unique_id=868101364]
