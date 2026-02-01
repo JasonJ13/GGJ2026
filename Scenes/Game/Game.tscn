@@ -329,7 +329,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gl6un")
-debug_Monster = false
 
 [node name="Player" parent="." unique_id=2132586905 instance=ExtResource("2_j5yw3")]
 clip_contents = false

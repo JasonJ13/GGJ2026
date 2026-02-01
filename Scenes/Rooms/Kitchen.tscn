@@ -11,11 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://ckch06d588akm" path="res://Assets/Graphical Assets/Losts/Kitchen/glass.png" id="9_8jbnq"]
 [ext_resource type="Texture2D" uid="uid://cuaddel2r8f7x" path="res://Assets/Graphical Assets/Losts/Kitchen/pan.png" id="10_wig1n"]
 
-[node name="Kitchen" type="Control" unique_id=1660816154]
+[node name="Kitchen" type="Control" unique_id=1660816154 node_paths=PackedStringArray("losts")]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_xqpxp")
+losts = [NodePath("CoffeLost"), NodePath("GlassLost"), NodePath("PanLost")]
+nmb_losts = 3
+posLosts = Array[Vector2]([Vector2(423, 144), Vector2(285, 342), Vector2(664, 513)])
+nmb_posLosts = 3
 metadata/_custom_type_script = "uid://gxssjaf764gg"
 
 [node name="KitchenSketch" type="TextureRect" parent="." unique_id=868101364]

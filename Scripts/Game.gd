@@ -16,6 +16,9 @@ var testRoomRess : Resource
 var onIdle : bool = true
 var comeFromRight : bool = true
 
+var kitchen : Room
+var attic : Room
+
 func get_current_room() -> Room :
 	return currentRoom
 
@@ -71,12 +74,13 @@ func _ready() -> void:
 		
 		enter_room(firstRoom, false)
 		monsterIsPresent = true
+		#place_new_lost()
 	
 	else :
-		var attic : Room = load("res://Scenes/Rooms/Attic.tscn").instantiate()
+		attic = load("res://Scenes/Rooms/Attic.tscn").instantiate()
 		var bedroom : Room = load("res://Scenes/Rooms/Bedroom.tscn").instantiate()
 		var livingroom : Room = load("res://Scenes/Rooms/Livingroom.tscn").instantiate()
-		var kitchen : Room = load("res://Scenes/Rooms/Kitchen.tscn").instantiate()
+		kitchen = load("res://Scenes/Rooms/Kitchen.tscn").instantiate()
 		
 		attic.set_right_room(bedroom)
 		bedroom.set_right_room(livingroom)
@@ -294,19 +298,21 @@ func choose_room_from() -> Room:
 	var nb = randi_range(1,nmbRoom-1)
 	for i in range (nb):
 		get_lost_room = get_lost_room.get_left_room()
-	return get_lost_room
+	return attic
 		
 func choose_room_to(lostRoom : Room) -> Room:
 	var get_place_room = lostRoom
 	var nb = randi_range(1,nmbRoom-1)
+	print(nb)
 	for i in range (nb):
 		get_place_room = get_place_room.get_left_room()
 		if (get_place_room == currentRoom):
 			get_place_room = get_place_room.get_left_room()
-	return get_place_room
+	return kitchen
 	
 func place_new_lost() -> void:
 	var room_from = choose_room_from()
 	var lost = room_from.get_random_lost()
 	var room_to = choose_room_to(room_from)
+	print(room_from)
 	room_to.set_random_pos_lost(lost)
