@@ -32,3 +32,14 @@ func lost_clicke(lost : Lost) -> void :
 	print("chek room lost grab", str(self))
 	grab_signal.emit(lost)
 	self.remove_child(lost)
+
+
+@export var losts : Array[Lost]
+var nmb_lost : int = len(losts)
+
+func get_random_lost() -> Lost :
+	var chance : int = randi() % nmb_lost
+	
+	return losts[chance]
+	
+	

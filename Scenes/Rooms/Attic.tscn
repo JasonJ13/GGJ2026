@@ -12,11 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://25n686ab336o" path="res://Assets/Graphical Assets/Losts/Attic/mask_flee.png" id="10_suro6"]
 [ext_resource type="Texture2D" uid="uid://u1qovqrip7fc" path="res://Assets/Graphical Assets/Losts/Attic/mask_continue.png" id="11_8333t"]
 
-[node name="Attic" type="Control" unique_id=1660816154]
+[node name="Attic" type="Control" unique_id=1660816154 node_paths=PackedStringArray("losts")]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_nsg7n")
+losts = [NodePath("MaskHugLost"), NodePath("MaskFleeLost"), NodePath("MaskContinueLost"), NodePath("MaskStayLost")]
 metadata/_custom_type_script = "uid://gxssjaf764gg"
 
 [node name="AtticSketch" type="TextureRect" parent="." unique_id=868101364]
@@ -61,10 +62,10 @@ texture = ExtResource("4_wo26x")
 
 [node name="MaskHugFound" parent="." unique_id=1366859269 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_dj34i")]
 layout_mode = 0
-offset_left = 482.0
-offset_top = 256.0
-offset_right = 482.0
-offset_bottom = 256.0
+offset_left = 665.0
+offset_top = 252.0
+offset_right = 665.0
+offset_bottom = 252.0
 lost_associate = NodePath("../MaskHugLost")
 texture_associate = NodePath("../HugMaskBg")
 
@@ -77,10 +78,10 @@ button_icon = ExtResource("6_wo26x")
 
 [node name="MaskFleeFound" parent="." unique_id=551221148 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_dj34i")]
 layout_mode = 0
-offset_left = 964.0
-offset_top = 512.0
-offset_right = 964.0
-offset_bottom = 512.0
+offset_left = 819.0
+offset_top = 257.0
+offset_right = 819.0
+offset_bottom = 257.0
 lost_associate = NodePath("../MaskFleeLost")
 texture_associate = NodePath("../FleeMaskBg")
 
@@ -93,40 +94,32 @@ button_icon = ExtResource("10_suro6")
 
 [node name="MaskContinueFound" parent="." unique_id=1254925507 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_dj34i")]
 layout_mode = 0
-offset_left = 1928.0
-offset_top = 1024.0
-offset_right = 1928.0
-offset_bottom = 1024.0
+offset_left = 321.0
+offset_top = 269.0
+offset_right = 321.0
+offset_bottom = 269.0
 lost_associate = NodePath("../MaskContinueLost")
 texture_associate = NodePath("../ContinueMaskBg")
 
 [node name="MaskContinueLost" parent="." unique_id=1841191163 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_nsg7n")]
 visible = false
 layout_mode = 0
-offset_left = 964.0
-offset_top = 512.0
-offset_right = 964.0
-offset_bottom = 512.0
 scale = Vector2(0.02, 0.02)
 found_associate = NodePath("../MaskContinueFound")
 button_icon = ExtResource("11_8333t")
 
 [node name="MaskStayFound" parent="." unique_id=1497149870 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_dj34i")]
 layout_mode = 0
-offset_left = 3856.0
-offset_top = 2048.0
-offset_right = 3856.0
-offset_bottom = 2048.0
+offset_left = 480.0
+offset_top = 258.0
+offset_right = 480.0
+offset_bottom = 258.0
 lost_associate = NodePath("../MaskStayLost")
 texture_associate = NodePath("../StayMaskBg")
 
 [node name="MaskStayLost" parent="." unique_id=1211066579 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_nsg7n")]
 visible = false
 layout_mode = 0
-offset_left = 2892.0
-offset_top = 1536.0
-offset_right = 2892.0
-offset_bottom = 1536.0
 scale = Vector2(0.02, 0.02)
 found_associate = NodePath("../MaskStayFound")
 button_icon = ExtResource("11_8333t")

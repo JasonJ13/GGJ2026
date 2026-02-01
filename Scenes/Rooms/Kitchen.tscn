@@ -53,55 +53,48 @@ texture = ExtResource("5_u61ql")
 [node name="CoffeLost" parent="." unique_id=534757491 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_4lad2")]
 visible = false
 layout_mode = 0
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.015, 0.015)
 found_associate = NodePath("../CoffeFound")
 button_icon = ExtResource("7_jbtbm")
 
 [node name="CoffeFound" parent="." unique_id=1366859269 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_ociu6")]
 layout_mode = 0
-offset_left = 867.0
-offset_top = 357.0
-offset_right = 867.0
-offset_bottom = 357.0
+offset_left = 859.0
+offset_top = 348.0
+offset_right = 859.0
+offset_bottom = 348.0
 lost_associate = NodePath("../CoffeLost")
 texture_associate = NodePath("../CoffeLostBg")
 
 [node name="GlassLost" parent="." unique_id=741506032 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_4lad2")]
 visible = false
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 1.0
-offset_bottom = 1.0
 scale = Vector2(0.005, 0.005)
 found_associate = NodePath("../GlassFound")
 button_icon = ExtResource("9_8jbnq")
 
 [node name="GlassFound" parent="." unique_id=551221148 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_ociu6")]
 layout_mode = 0
-offset_left = 867.0
-offset_top = 357.0
-offset_right = 867.0
-offset_bottom = 357.0
+offset_left = 388.0
+offset_top = 275.0
+offset_right = 388.0
+offset_bottom = 275.0
+scale = Vector2(0.5, 0.5)
 lost_associate = NodePath("../GlassLost")
 texture_associate = NodePath("../GlassLostBg")
 
 [node name="PanLost" parent="." unique_id=1383067365 node_paths=PackedStringArray("found_associate") instance=ExtResource("3_4lad2")]
 visible = false
 layout_mode = 0
-offset_left = 1.005
-offset_top = 1.005
-offset_right = 1.005
-offset_bottom = 1.005
-scale = Vector2(0.005, 0.005)
+scale = Vector2(0.015, 0.015)
 found_associate = NodePath("../PanFound")
 button_icon = ExtResource("10_wig1n")
 
 [node name="PanFound" parent="." unique_id=75982795 node_paths=PackedStringArray("lost_associate", "texture_associate") instance=ExtResource("4_ociu6")]
 layout_mode = 0
-offset_left = 5.335
-offset_top = 2.7849998
-offset_right = 5.335
-offset_bottom = 2.7849998
+offset_left = 698.0
+offset_top = 358.0
+offset_right = 698.0
+offset_bottom = 358.0
 lost_associate = NodePath("../PanLost")
 texture_associate = NodePath("../PanLostBg")
