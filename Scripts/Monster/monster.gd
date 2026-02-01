@@ -12,8 +12,6 @@ enum Mask {CONTINUE, CUTE, DANGER, FLEE, STAY}
 @export var mask : Mask
 @onready var textureMask : Array[Node] = $Head.get_children()
 
-@onready var timerRespawn : Timer = $Respawn
-
 signal is_huged
 
 

@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="GGJ"
+run/main_scene="uid://dwcsu5ya8ni5g"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://Assets/icon.svg"
+config/icon="res://Assets/OtherImage/Logo_Godot.svg"
 
 [file_customization]
 

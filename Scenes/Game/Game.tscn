@@ -106,6 +106,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MouseBlocker:mouse_filter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
 
 [sub_resource type="Animation" id="Animation_3anhv"]
 resource_name = "FadeOut"
@@ -164,6 +176,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1152, 0), Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MouseBlocker:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_pqvxe"]
 resource_name = "FadeOutToRight"
@@ -205,6 +229,18 @@ tracks/2/keys = {
 "args": [],
 "method": &"new_right_room"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MouseBlocker:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_lbrif"]
@@ -262,6 +298,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MouseBlocker:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lbrif"]
 _data = {
@@ -299,6 +347,14 @@ parameters/conditions/Stay = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=947932303]
 libraries/ = SubResource("AnimationLibrary_lbrif")
 
+[node name="KillTimer" type="Timer" parent="." unique_id=252207432]
+wait_time = 3.0
+one_shot = true
+
+[node name="RespawnTimer" type="Timer" parent="." unique_id=1850886962]
+wait_time = 3.0
+one_shot = true
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1046974820]
 z_index = 5
 layout_mode = 1
@@ -310,13 +366,14 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="KillTimer" type="Timer" parent="." unique_id=252207432]
-wait_time = 5.0
-one_shot = true
-
-[node name="RespawnTimer" type="Timer" parent="." unique_id=1850886962]
-wait_time = 3.0
-one_shot = true
+[node name="MouseBlocker" type="Control" parent="." unique_id=265685557]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="give_lost" from="Player" to="." method="player_give_lost"]
 [connection signal="left" from="Player" to="." method="enter_left_room"]

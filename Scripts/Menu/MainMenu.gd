@@ -3,6 +3,9 @@ extends Control
 signal start
 
 @onready var firstLayer :  VBoxContainer = $FirstLayer
+@onready var option : Control = $Option
+@onready var credit : Control = $Credits
+
 
 func hide_first_layer() :
 	firstLayer.hide()
@@ -16,11 +19,13 @@ func start_pressed() -> void:
 
 func setting_pressed() -> void:
 	hide_first_layer()
+	option.show()
 
 
 func credit_pressed() -> void:
 	hide_first_layer()
+	credit.show()
 
 
 func quit_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().quit()

@@ -1,8 +1,8 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://b1qvlp5nsm1ts"]
 
-[ext_resource type="FontFile" uid="uid://cwqqaevo84g15" path="res://Assets/Writing/RunFont.otf" id="1_k6k5r"]
+[ext_resource type="FontFile" uid="uid://b28l3725otfqc" path="res://Assets/Writing/HelpMe.ttf" id="1_2qlue"]
 
 [resource]
-font = ExtResource("1_k6k5r")
+font = ExtResource("1_2qlue")
 font_size = 32
-font_color = Color(1.92523e-07, 0.7774816, 0.1257864, 1)
+font_color = Color(0, 0.9647059, 0.16470589, 1)

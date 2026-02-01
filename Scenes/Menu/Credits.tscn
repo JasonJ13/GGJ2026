@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://dy6m3yfjfkjvk"]
+
+[ext_resource type="Script" uid="uid://bugcoc6uiofuw" path="res://Scripts/Menu/Credits.gd" id="1_6wcx4"]
+[ext_resource type="LabelSettings" uid="uid://b1qvlp5nsm1ts" path="res://Assets/Writing/buttonSetting.tres" id="2_6p01r"]
+[ext_resource type="LabelSettings" uid="uid://cvdyo1v2earlo" path="res://Assets/Writing/creditSetting.tres" id="3_rc2un"]
+[ext_resource type="Texture2D" uid="uid://bsxudqy7olf43" path="res://Assets/OtherImage/Logo_GGJ.png" id="4_38lf1"]
+[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/OtherImage/Logo_Godot.svg" id="5_fk7rg"]
+
+[node name="Credits" type="Control" unique_id=262669157]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wcx4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1539203101]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = -16.0
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1972510336]
+layout_mode = 2
+text = "GAME TITLE"
+label_settings = ExtResource("2_6p01r")
+
+[node name="credit" type="VSplitContainer" parent="VBoxContainer" unique_id=1269451697]
+layout_mode = 2
+split_offsets = PackedInt32Array(0, 0, 0, 0, 0)
+
+[node name="Prog" type="Label" parent="VBoxContainer/credit" unique_id=1156948775]
+layout_mode = 2
+text = "programming"
+label_settings = ExtResource("3_rc2un")
+
+[node name="NameProg" type="Label" parent="VBoxContainer/credit" unique_id=159623331]
+layout_mode = 2
+text = "    Sansinspi
+    Eline"
+label_settings = ExtResource("3_rc2un")
+vertical_alignment = 2
+
+[node name="GraphicDesign" type="Label" parent="VBoxContainer/credit" unique_id=1398108418]
+layout_mode = 2
+text = "GraphicDesign"
+label_settings = ExtResource("3_rc2un")
+
+[node name="NameGraphicDesign" type="Label" parent="VBoxContainer/credit" unique_id=404430132]
+layout_mode = 2
+text = "    Surement quelqu'un"
+label_settings = ExtResource("3_rc2un")
+vertical_alignment = 2
+
+[node name="SoundDesign" type="Label" parent="VBoxContainer/credit" unique_id=1838395479]
+layout_mode = 2
+text = "SoundDesign"
+label_settings = ExtResource("3_rc2un")
+
+[node name="NameSoundDesign" type="Label" parent="VBoxContainer/credit" unique_id=1338044550]
+layout_mode = 2
+text = "    sherpearce"
+label_settings = ExtResource("3_rc2un")
+vertical_alignment = 2
+
+[node name="Back" type="Label" parent="VBoxContainer" unique_id=838739921]
+z_index = 1
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "BACK"
+label_settings = ExtResource("2_6p01r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Back" unique_id=335953520]
+z_as_relative = false
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 1
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="GGJ" type="Control" parent="." unique_id=1184625122]
+anchors_preset = 0
+offset_left = 841.0
+offset_top = 82.0
+offset_right = 881.0
+offset_bottom = 122.0
+
+[node name="Label" type="Label" parent="GGJ" unique_id=1662087118]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.0
+offset_right = 181.0
+offset_bottom = 59.0
+grow_horizontal = 2
+text = "Game made for 
+the Global Game Jam 2026"
+label_settings = ExtResource("3_rc2un")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GGJ" unique_id=1224747157]
+modulate = Color(0.641934, 0.641934, 0.641934, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = 50.0
+offset_right = 495.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_38lf1")
+
+[node name="Godot" type="Control" parent="." unique_id=1539260303]
+anchors_preset = 0
+offset_left = 833.0
+offset_top = 394.0
+offset_right = 873.0
+offset_bottom = 434.0
+
+[node name="Label" type="Label" parent="Godot" unique_id=450004798]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_right = 130.0
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "Made with GODOT "
+label_settings = ExtResource("3_rc2un")
+
+[node name="TextureRect" type="TextureRect" parent="Godot" unique_id=139352652]
+modulate = Color(0.641934, 0.641934, 0.641934, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 48.0
+offset_right = 64.0
+offset_bottom = 176.0
+grow_horizontal = 2
+texture = ExtResource("5_fk7rg")
+
+[connection signal="pressed" from="VBoxContainer/Back/BackButton" to="." method="get_back"]

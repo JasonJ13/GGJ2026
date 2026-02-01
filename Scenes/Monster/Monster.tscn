@@ -231,9 +231,6 @@ libraries/ = SubResource("AnimationLibrary_hr3cx")
 autoplay = &"RESET"
 speed_scale = 1.5
 
-[node name="Respawn" type="Timer" parent="." unique_id=48233595]
-wait_time = 3.0
-
 [node name="Button" type="Button" parent="." unique_id=1279033204]
 layout_mode = 0
 offset_left = -159.0

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1wjmc26ebu4g" path="res://Assets/Graphical Assets/Rooms/bedroom_sketch.png" id="2_b2o46"]
 [ext_resource type="PackedScene" uid="uid://bimcbqb4ldp4r" path="res://Scenes/Losts&Founds/Lost.tscn" id="3_b2o46"]
 [ext_resource type="PackedScene" uid="uid://bhrvtcvnh2yp3" path="res://Scenes/Losts&Founds/Found.tscn" id="4_tg3q4"]
-[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/icon.svg" id="4_wrg8o"]
+[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/OtherImage/Logo_Godot.svg" id="4_wrg8o"]
 
 [node name="Bedroom" type="Control" unique_id=1660816154]
 layout_mode = 3

@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://bypcifkb5sq7k"]
 
 [ext_resource type="Texture2D" uid="uid://h46vjyffjsi6" path="res://Assets/Graphical Assets/Rooms/attic_sketch.png" id="1_35riq"]
-[ext_resource type="FontFile" uid="uid://cwqqaevo84g15" path="res://Assets/Writing/RunFont.otf" id="1_a2ivp"]
 [ext_resource type="Script" uid="uid://krpdpyikwr1o" path="res://Scripts/Menu/MainMenu.gd" id="1_p4pvn"]
 [ext_resource type="PackedScene" uid="uid://dhjojrg00b857" path="res://Scenes/Monster/Monster.tscn" id="2_mj0i0"]
+[ext_resource type="FontFile" uid="uid://b28l3725otfqc" path="res://Assets/Writing/HelpMe.ttf" id="4_shv8k"]
 [ext_resource type="LabelSettings" uid="uid://b1qvlp5nsm1ts" path="res://Assets/Writing/buttonSetting.tres" id="5_rsxkb"]
 [ext_resource type="PackedScene" uid="uid://cbmb6dlp73g5j" path="res://Scenes/Menu/Option.tscn" id="5_s3ie0"]
+[ext_resource type="PackedScene" uid="uid://dy6m3yfjfkjvk" path="res://Scenes/Menu/Credits.tscn" id="7_shv8k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mj0i0"]
-font = ExtResource("1_a2ivp")
+font = ExtResource("4_shv8k")
 font_size = 72
 font_color = Color(0.45490196, 1, 0.40392157, 1)
 
@@ -136,7 +137,13 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 
+[node name="Credits" parent="." unique_id=262669157 instance=ExtResource("7_shv8k")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="FirstLayer/Start/StartButton" to="." method="start_pressed"]
 [connection signal="pressed" from="FirstLayer/Setting/SettingButton" to="." method="setting_pressed"]
 [connection signal="pressed" from="FirstLayer/Credit/CreditButton" to="." method="credit_pressed"]
 [connection signal="pressed" from="FirstLayer/Quit/QuitButton" to="." method="quit_pressed"]
+[connection signal="back" from="Option" to="." method="show_first_layer"]
+[connection signal="back" from="Credits" to="." method="show_first_layer"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djijvco3w202v"]
 
 [ext_resource type="Script" uid="uid://bm835ckbaiyib" path="res://Scripts/Losts&Founds/lost_test.gd" id="1_kee4t"]
-[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/icon.svg" id="2_aw0fw"]
+[ext_resource type="Texture2D" uid="uid://c3pkl8p1p5qut" path="res://Assets/OtherImage/Logo_Godot.svg" id="2_aw0fw"]
 
 [node name="LostTest" type="Control" unique_id=534757491]
 layout_mode = 3

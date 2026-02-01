@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://ncg1vh3wqfec"]
+
+[ext_resource type="Texture2D" uid="uid://dnvh1bg1gpkkc" path="res://Assets/Graphical Assets/Monster/Masks/head_stay_sketch.png" id="1_baa14"]
+[ext_resource type="Script" uid="uid://gvw57rvq0ncr" path="res://Scripts/Menu/loadingScreen.gd" id="1_bsv62"]
+
+[sub_resource type="Animation" id="Animation_bsv62"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeaD:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uwo27"]
+resource_name = "SpiningHead"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeaD:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_drpol"]
+_data = {
+&"RESET": SubResource("Animation_bsv62"),
+&"SpiningHead": SubResource("Animation_uwo27")
+}
+
+[node name="LoadingScreen" type="Control" unique_id=1829468449]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bsv62")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=3239404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22122926, 0.15208471, 0.0430471, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2067018369]
+libraries/ = SubResource("AnimationLibrary_drpol")
+
+[node name="HeaD" type="Control" parent="." unique_id=2143659337]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -156.0
+offset_right = -136.0
+offset_bottom = -116.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HeaD" unique_id=1738929591]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = -283.0
+offset_right = 234.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_baa14")
+expand_mode = 1
